@@ -23,6 +23,7 @@ function Header() {
         <Link to="/">Accueil</Link>
         <Link to="/connexion">Se connecter</Link>
         <Link to="/inscription">S'inscrire</Link>
+        <Link to="/mon-compte">Mon compte</Link>
       </nav>
       <br/>
 
