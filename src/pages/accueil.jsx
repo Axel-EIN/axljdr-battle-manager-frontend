@@ -22,7 +22,7 @@ function accueil() {
 
   return (
     <>
-      <h1>Ceci est la page d'accueil</h1>
+      <h1>ACCUEIL</h1>
 
       <h2>Combats :</h2>
 
