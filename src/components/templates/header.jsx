@@ -2,7 +2,8 @@ import { useContext, useEffect } from 'react';
 import { useNavigate, Link, } from 'react-router-dom';
 import { ContexteUtilisateur } from '../../contexts/contexteUtilisateur';
 
-function header() {
+function Header() {
+  // Récupération de l'utilisateur et de la fonction pour deconnecter via destructuration du contexte utilisateur
   const { utilisateur, deconnecterUtilisateur } = useContext(ContexteUtilisateur);
   const navigate = useNavigate();
 
@@ -10,14 +11,14 @@ function header() {
 
   const gererDeconnexion = () => {
     deconnecterUtilisateur();
-    navigate('/');
+    navigate('/'); // Redirection à l'accueil
   };
 
   console.log('header composant variable utilisateur :', utilisateur);
 
   return (
     <>
-      <h2>Ceci est l'en-tête</h2>
+      <h2>Header</h2>
       <nav>
         <Link to="/">Accueil</Link>
         <Link to="/connexion">Se connecter</Link>
@@ -40,4 +41,4 @@ function header() {
   )
 }
 
-export default header;
+export default Header;
