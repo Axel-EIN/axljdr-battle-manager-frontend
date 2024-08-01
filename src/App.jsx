@@ -7,11 +7,11 @@ import PageInscription from './pages/PageInscription.jsx';
 
 function App() {
 
-  return (
+  return ( // Définition des Routes
     <>
     <Routes>
       <Route path="/" element={<Template />}>
-<Route index element={<PageAccueil />} />
+        <Route index element={<PageAccueil />} />
         <Route path="/connexion" element={<PageConnexion />} />
         <Route path="/inscription" element={<PageInscription />} />
       </Route>
