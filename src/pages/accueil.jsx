@@ -16,6 +16,7 @@ function accueil() {
 
   const recupererCombats = async () => {
     const { data } = await axios.get(URLS.BATTLE_ALL);
+    console.log(data);
     setCombats(data);
   };
 
@@ -50,13 +51,38 @@ function accueil() {
 
       <h2>Combats :</h2>
 
-      <ul>
-        {combats?.map(
-          (combat, cle) => (
-            <li key={cle}>{combat.titre} | {combat.status}</li>
-          )
-        )}
-      </ul>
+      {!combats ?
+        (
+          <>Les Combats n'existent pas !</>
+        )
+        :
+        (
+          <>
+            {Array.isArray(combats) ?
+              (
+                <>
+                  Les Combats sont dans un tableau !
+                  {combats.length > 0 ?
+                    (
+                      <>
+                        <ul>
+                          { combats.map( (combat, cle) => ( <li key={cle}>{combat.titre} | {combat.status}</li> ) )}
+                        </ul>
+                      </>
+                    )
+                    :
+                    (<>Il n'y a pas encore de combats ! </>)
+                  }
+                </>
+              )
+              :
+              (
+                <>Ce n'est pas un tableau</>
+              )
+            }
+          </>
+        )
+      }
     </>
   )
 }
