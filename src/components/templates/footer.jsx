@@ -1,9 +1,7 @@
-import React from 'react';
-
-function footer() {
+function Footer() {
   return (
-    <h2>Ceci est le pied-de-page</h2>
+    <h2>Pied-de-page</h2>
   )
 }
 
-export default footer;
+export default Footer;
