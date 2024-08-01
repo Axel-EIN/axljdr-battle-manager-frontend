@@ -9,6 +9,11 @@ function accueil() {
   const [mdp, setMdp] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    recupererCombats();
+  }, []);
+
+
   const recupererCombats = async () => {
     const { data } = await axios.get(URLS.BATTLE_ALL);
     setCombats(data);
@@ -28,10 +33,6 @@ function accueil() {
       console.error(erreur.message);
     }
   }
-
-  useEffect(() => {
-    recupererCombats();
-  }, []);
 
   return (
     <>
