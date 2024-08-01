@@ -1,19 +1,20 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import { URLS } from './../constants/urls.js';
-// import { UserContext } from "../../contexts/userContext";
+
+// Import du contexte pour les utilisateurs
+import { ContexteUtilisateur } from '../contexts/contexteUtilisateur.jsx';
 
 const Connexion = () => {
-    const [identifiant, setIdentifiant] = useState("");
-    const [mdp, setMdp] = useState("");
+    const [identifiant, setIdentifiant] = useState('');
+    const [mdp, setMdp] = useState('');
     const navigate = useNavigate();
-    //   const { login } = useContext(UserContext)
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const { connecterUtilisateur } = useContext(ContexteUtilisateur);
+
+    const gererSoumissionFormulaire = async (event) => {
+        event.preventDefault(); // On previent le fonctionnement par défaut
         try {
-            const utilisateur = await axios.post(URLS.USER_LOGIN, { identifiant: identifiant, mdp: mdp });
+            await connecterUtilisateur(identifiant, mdp);
             navigate("/");
         } catch (error) {
             console.error(error.message);
@@ -22,7 +23,8 @@ const Connexion = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <h1>PAGE CONNEXION</h1>
+            <form onSubmit={gererSoumissionFormulaire}>
                 Identifiant :<br />
                 <input type="text" id="identifiant" name="identifiant" value={identifiant} onChange={ (event) => setIdentifiant(event.target.value) } /><br />
                 Mot de passe :<br />
