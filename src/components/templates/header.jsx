@@ -19,7 +19,7 @@ function Header() {
   console.log("header composant variable utilisateur :", utilisateur);
 
   return (
-    <headerbar>
+    <header>
       {utilisateur && utilisateur.role == 'admin' &&
         (
           <adminbar><Link to="/admin">Panneau d'Administration</Link></adminbar>
@@ -56,7 +56,7 @@ function Header() {
           )}
         </userzone>
       </navbar>
-    </headerbar>
+    </header>
   );
 }
 
