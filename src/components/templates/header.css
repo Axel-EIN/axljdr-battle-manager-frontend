@@ -1,11 +1,31 @@
-headerbar {
+header {
   display: flex;
   flex-direction: column;
+  background-color: #334455;
+
+  adminbar {
+    display: flex;
+    justify-content: center;
+    background-color: purple;
+  }
+
+  mjbar {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+  }
 
   navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
+    min-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #aaa;
   
     logo {
       margin-right: 2rem;
