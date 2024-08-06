@@ -11,7 +11,6 @@ function PageAccueil() {
 
   const recupererCombats = async () => {
     const { data } = await axios.get(URLS.BATTLE_ALL);
-    console.log(data);
     setCombats(data);
   };
 
