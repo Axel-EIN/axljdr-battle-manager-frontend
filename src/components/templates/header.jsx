@@ -16,8 +16,6 @@ function Header() {
     navigate("/"); // Redirection à l'accueil
   };
 
-  console.log("header composant variable utilisateur :", utilisateur);
-
   return (
     <header>
       {utilisateur && utilisateur.role == 'admin' &&
