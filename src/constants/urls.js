@@ -5,7 +5,7 @@ export const URLS = {
     USER_REGISTER: `${BASE_URL}/api/utilisateur/inscrire`,
     USER_ALL: `${BASE_URL}/api/utilisateur/tous`,
     USER_EDIT: `${BASE_URL}/api/utilisateur/modifier/:id`,
-    USER_DELETE: `${BASE_URL}/api/utilisateur/supprimer/:id`,
+    USER_DELETE: `${BASE_URL}/api/utilisateur/supprimer`,
     USER_LOGIN: `${BASE_URL}/api/utilisateur/connecter`,
 
     // PERSONNAGE
