@@ -7,7 +7,7 @@ import PageAccueil from "./pages/PageAccueil.jsx";
 import PageConnexion from "./pages/PageConnexion.jsx";
 import PageInscription from "./pages/PageInscription.jsx";
 import PageMonCompte from "./pages/PageMonCompte.jsx";
-import PageAdmin from "./pages/PageAdmin.jsx";
+import PageAdmin from "./pages/admin/PageAdmin.jsx";
 import PageMj from "./pages/PageMj.jsx";
 
 function App() {

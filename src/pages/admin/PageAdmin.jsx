@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URLS } from './../constants/urls.js';
+import { URLS } from '../../constants/urls.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
