@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Template from "./components/templates/Template.jsx";
 import TemplateConnecte from "./components/templates/TemplateConnecte.jsx";
 import TemplatePasConnecte from "./components/templates/TemplatePasConnecte.jsx";
+import TemplateMJ from "./components/templates/TemplateMJ.jsx";
 import PageAccueil from "./pages/PageAccueil.jsx";
 import PageConnexion from "./pages/PageConnexion.jsx";
 import PageInscription from "./pages/PageInscription.jsx";
@@ -30,6 +31,9 @@ function App() {
           <Route element={<TemplateConnecte />} >
             <Route path="/mon-compte" element={<PageMonCompte />} />
             <Route path="/admin" element={<PageAdmin />} />
+          </Route>
+
+          <Route element={<TemplateMJ />} >
             <Route path="/mj" element={<PageMj />} />
           </Route>
 
