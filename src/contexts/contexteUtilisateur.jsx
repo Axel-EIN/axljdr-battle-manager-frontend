@@ -6,7 +6,8 @@ export const ContexteUtilisateur = createContext();
 
 export const FournisseurUtilisateur = ({ children }) => {
   const [utilisateur, setUtilisateur] = useState(null);
-
+  const [loading, setLoading] = useState(true); // Mise en place d'un système de loading pour attendre que le contexte récupère l'utilisateur courant
+  
   useEffect(() => {
     recupererUtilisateurCourant();
   }, []);
@@ -18,15 +19,15 @@ export const FournisseurUtilisateur = ({ children }) => {
         withCredentials: true // Permet d'envoyer le cookier jwt lors de la requête
       });
 
-      console.log("data", data);
-
       if ( status == 200 ) {
         const utilisateurCourant = data;
         setUtilisateur(utilisateurCourant);
       }
+      setLoading(false); // Loading terminé
 
     } catch (error) {
       console.error("error", error);
+      setLoading(false); // Loading terminé
     }
   };
 
@@ -44,15 +45,19 @@ export const FournisseurUtilisateur = ({ children }) => {
       const utilisateurConnecte = data;
       setUtilisateur(utilisateurConnecte);
     }
+    setLoading(false); // Loading terminé
   };
 
   // Fonction pour déconnecter l'Utilisateur
-  const deconnecterUtilisateur = () => {
+  const deconnecterUtilisateur = async () => {
+    const { data, status } = await axios.post(URLS.USER_LOGOUT,{}, {
+      withCredentials: true
+    });
     setUtilisateur(null);
   };
 
   return (
-    <ContexteUtilisateur.Provider value={{ utilisateur, connecterUtilisateur, deconnecterUtilisateur }}>
+    <ContexteUtilisateur.Provider value={{ utilisateur, connecterUtilisateur, deconnecterUtilisateur, loading }}>
       {children}
     </ContexteUtilisateur.Provider>
   );
