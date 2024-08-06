@@ -4,6 +4,7 @@ import Template from "./components/templates/Template.jsx";
 import TemplateConnecte from "./components/templates/TemplateConnecte.jsx";
 import TemplatePasConnecte from "./components/templates/TemplatePasConnecte.jsx";
 import TemplateMJ from "./components/templates/TemplateMJ.jsx";
+import TemplateAdmin from "./components/templates/TemplateAdmin.jsx";
 import PageAccueil from "./pages/PageAccueil.jsx";
 import PageConnexion from "./pages/PageConnexion.jsx";
 import PageInscription from "./pages/PageInscription.jsx";
@@ -35,6 +36,10 @@ function App() {
 
           <Route element={<TemplateMJ />} >
             <Route path="/mj" element={<PageMj />} />
+          </Route>
+
+          <Route element={<TemplateAdmin />} >
+            <Route path="/admin" element={<PageAdmin />} />
           </Route>
 
         </Route>
