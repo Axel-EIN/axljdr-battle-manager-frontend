@@ -1,29 +1,20 @@
-import Template from './Template.jsx';
-import { ContexteUtilisateur } from '../../contexts/contexteUtilisateur.jsx';
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import Template from "./Template.jsx";
+import { ContexteUtilisateur } from "../../contexts/contexteUtilisateur.jsx";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 const TemplateConnecte = () => {
+  const { utilisateur, loading } = useContext(ContexteUtilisateur); // Récupération de l'utilsiateur connecté dans le contexte et de la variable loading
 
-    // Récupération de l'utilsiateur connecté dans le contexte
-    const { utilisateur } = useContext(ContexteUtilisateur);
-
-    // Si l'utilisateur exite et se rend sur une page pour connecté, on affiche le template header outlet footer
-    // Sinon cela veut dire que l'utilisateur n'est pas connecté et ne doit pas avoir accès à ces pages, on le redirige vers la page de connexion
-
-    return (
-        <>
-            {utilisateur ?
-                (
-                    <Template/>
-                )
-                :
-                ( 
-                    <Navigate to="/connexion"/> 
-                )
-            }
-        </>
-    );
-}
+  // Si le loading de l'utilisateur du context et terminé, alors on verifie si l'utilisateur existe.
+  // Si oui on affiche le template, sinon on redirige vers la page de connexion
+  return (
+    <>
+      {!loading && (
+        <>{utilisateur ? <Template /> : <Navigate to="/connexion" />}</>
+      )}
+    </>
+  );
+};
 
 export default TemplateConnecte;
