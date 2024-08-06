@@ -12,7 +12,6 @@ const PageAdmin = () => {
 
     const recupererUtilisateurs = async () => {
         const { data } = await axios.get(URLS.USER_ALL);
-        console.log(data);
         setUtilisateurs(data);
     }
 
