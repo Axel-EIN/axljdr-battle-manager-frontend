@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from './header.jsx';
-import Footer from './footer.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 
 const Template = () => {
     return (
