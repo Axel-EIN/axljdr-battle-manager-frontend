@@ -8,9 +8,9 @@ const Template = () => {
     <>
       <Header />
       <main>
-        <container className="container">
+        <div className="container">
             <Outlet />
-        </container>
+        </div>
       </main>
       <Footer />
     </>
