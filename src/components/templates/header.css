@@ -3,19 +3,19 @@ header {
   flex-direction: column;
   background-color: #334455;
 
-  adminbar {
+  #adminbar {
     display: flex;
     justify-content: center;
     background-color: purple;
   }
 
-  mjbar {
+  #mjbar {
     display: flex;
     justify-content: center;
     background-color: red;
   }
 
-  navbar {
+  #navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,7 +27,7 @@ header {
     padding-right: 1rem;
     color: #aaa;
   
-    logo {
+    #logo {
       margin-right: 2rem;
       img {
         width: 96px;
@@ -47,10 +47,10 @@ header {
       }
     }
   
-    userzone {
+    #userzone {
       margin-left: auto;
       
-      logged, notlogged {
+      .logged, .notlogged {
         display: flex;
         flex-direction: column;
         justify-content: center;
