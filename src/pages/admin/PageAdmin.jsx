@@ -3,14 +3,17 @@ import { URLS } from '../../constants/urls.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const PageAdmin = () => {
     const [utilisateurs, setUtilisateurs] = useState([]);
+    const [reload, setReload] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         recupererUtilisateurs();
-    }, [])
+        setReload(false);
+    }, [reload])
 
     const recupererUtilisateurs = async () => {
         const { data } = await axios.get(URLS.USER_ALL);
@@ -20,6 +23,7 @@ const PageAdmin = () => {
     const supprimerUtilisateur = async (utilisateurID) => {
         const instance = axios.create({withCredentials: true})
         const reponse = await instance.delete(URLS.USER_DELETE + '/' + utilisateurID);
+        setReload(true);
     }
 
     return (
@@ -54,7 +58,7 @@ const PageAdmin = () => {
                                 <td>{utilisateur.avatar}</td>
                                 <td>{utilisateur.role}</td>
                                 <td><Link to="/edit">Edit</Link></td>
-                                <td><button onClick={() => supprimerUtilisateur(utilisateur.id)}>Delete</button></td>
+                                <td><DeleteIcon onClick={() => supprimerUtilisateur(utilisateur.id)} /></td>
                             </tr>
                         )
                     )
