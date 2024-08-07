@@ -3,6 +3,7 @@ const BASE_URL = 'http://localhost:8080';
 export const URLS = {
     // UTILISATEUR
     USER_REGISTER: `${BASE_URL}/api/utilisateur/inscrire`,
+    USER_CREATE: `${BASE_URL}/api/utilisateur/creer`,
     USER_ALL: `${BASE_URL}/api/utilisateur/tous`,
     USER_EDIT: `${BASE_URL}/api/utilisateur/modifier/:id`,
     USER_DELETE: `${BASE_URL}/api/utilisateur/supprimer`,
