@@ -11,6 +11,7 @@ import PageInscription from "./pages/PageInscription.jsx";
 import PageMonCompte from "./pages/PageMonCompte.jsx";
 import PageAdmin from "./pages/admin/PageAdmin.jsx";
 import PageUtilisateurCreer from "./pages/admin/PageUtilisateurCreer.jsx";
+import PageUtilisateurModifier from "./pages/admin/PageUtilisateurModifier.jsx";
 import PageMj from "./pages/PageMj.jsx";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route element={<TemplateAdmin />} >
             <Route path="/admin" element={<PageAdmin />} />
             <Route path="/admin/utilisateur/creer" element={<PageUtilisateurCreer />} />
+            <Route path="/admin/utilisateur/modifier/:utilisateurID" element={<PageUtilisateurModifier />} />
           </Route>
 
         </Route>
