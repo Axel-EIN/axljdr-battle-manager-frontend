@@ -2,9 +2,11 @@ import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const PageAdmin = () => {
     const [utilisateurs, setUtilisateurs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         recupererUtilisateurs();
@@ -25,7 +27,7 @@ const PageAdmin = () => {
             <h1>Bienvenue sur la page d'administration !</h1>
 
             <h2>Utilisateurs :</h2>
-            <button>Créer un Utilisateur</button>
+            <button onClick={() => navigate("/admin/utilisateur/creer")}>Créer un Utilisateur</button>
 
             <table>
                 <thead>
