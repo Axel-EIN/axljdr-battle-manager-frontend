@@ -21,6 +21,7 @@ const PageConnexion = () => {
       navigate("/"); // Rédirection à l'accueil
     } catch (error) {
       console.error(error.message);
+      alert(error.response.data);
     }
   };
 
