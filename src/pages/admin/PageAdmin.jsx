@@ -3,6 +3,7 @@ import { URLS } from '../../constants/urls.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const PageAdmin = () => {
@@ -57,7 +58,7 @@ const PageAdmin = () => {
                                 <td>{utilisateur.prenom}</td>
                                 <td>{utilisateur.avatar}</td>
                                 <td>{utilisateur.role}</td>
-                                <td><Link to="/edit">Edit</Link></td>
+                                <td><Link to={'/admin/utilisateur/modifier' + '/' + utilisateur.id}><EditIcon /></Link></td>
                                 <td><DeleteIcon onClick={() => supprimerUtilisateur(utilisateur.id)} /></td>
                             </tr>
                         )
