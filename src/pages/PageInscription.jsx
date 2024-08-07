@@ -27,13 +27,6 @@ const PageInscription = () => {
     } catch (erreur) {
       console.error(erreur.message);
     }
-
-    // Remise à zero après la validation du formulaire
-    setIdentifiant("");
-    setEmail("");
-    setMdp("");
-    setPrenom("");
-    setAvatar("");
   };
 
   return ( // Affichage de la Vue
