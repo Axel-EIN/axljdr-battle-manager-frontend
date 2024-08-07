@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { URLS } from './../constants/urls.js';
-import { useNavigate } from "react-router-dom";
+import { URLS } from '../constants/urls.js';
 
-function accueil() {
+function PageAccueil() {
   const [combats, setCombats] = useState([]);
-  const [identifiant, setIdentifiant] = useState([]);
-  const [mdp, setMdp] = useState([]);
-  const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { // grâce à useEffect on monte au chargement la fonction recupererCombats
     recupererCombats();
   }, []);
-
 
   const recupererCombats = async () => {
     const { data } = await axios.get(URLS.BATTLE_ALL);
@@ -20,11 +15,11 @@ function accueil() {
     setCombats(data);
   };
 
-  return (
+  return ( // Affichage de la vue
     <>
-      <h1>ACCUEIL</h1>
+      <h1>PAGE ACCUEIL</h1>
 
-      <h2>Combats :</h2>
+      <h2>Liste des Combats :</h2>
 
       {!combats ?
         (
@@ -46,7 +41,7 @@ function accueil() {
                       </>
                     )
                     :
-                    (<>Il n'y a pas encore de combats ! </>)
+                    (<><br/>Il n'y a pas encore de combats ! </>)
                   }
                 </>
               )
@@ -62,4 +57,4 @@ function accueil() {
   )
 }
 
-export default accueil
+export default PageAccueil
