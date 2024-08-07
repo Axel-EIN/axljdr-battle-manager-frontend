@@ -10,6 +10,7 @@ import PageConnexion from "./pages/PageConnexion.jsx";
 import PageInscription from "./pages/PageInscription.jsx";
 import PageMonCompte from "./pages/PageMonCompte.jsx";
 import PageAdmin from "./pages/admin/PageAdmin.jsx";
+import PageUtilisateurCreer from "./pages/admin/PageUtilisateurCreer.jsx";
 import PageMj from "./pages/PageMj.jsx";
 
 function App() {
@@ -31,7 +32,6 @@ function App() {
 
           <Route element={<TemplateConnecte />} >
             <Route path="/mon-compte" element={<PageMonCompte />} />
-            <Route path="/admin" element={<PageAdmin />} />
           </Route>
 
           <Route element={<TemplateMJ />} >
@@ -40,6 +40,7 @@ function App() {
 
           <Route element={<TemplateAdmin />} >
             <Route path="/admin" element={<PageAdmin />} />
+            <Route path="/admin/utilisateur/creer" element={<PageUtilisateurCreer />} />
           </Route>
 
         </Route>
