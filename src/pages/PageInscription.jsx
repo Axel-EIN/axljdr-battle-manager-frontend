@@ -8,11 +8,11 @@ const PageInscription = () => {
 
   const enregistrerUtilisateurSoumis = async (utilisateurSoumis) => {
     try {
-      await axios.post(URLS.USER_REGISTER, utilisateurSoumis);
+      const reponse = await axios.post(URLS.USER_REGISTER, utilisateurSoumis);
+      alert("Inscription réussie ! Vous pouvez vous connecter !");
       navigate("/");
-    } catch (erreur) {
-      console.error(erreur.message);
-    }
+    } catch ( {response} ) { // déconstruit l'objet habituellement catché en ne prenant que la sous-propriété response
+      alert(response.data.error); }
   };
 
   return (
