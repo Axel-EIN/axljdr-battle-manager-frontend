@@ -6,19 +6,25 @@ import FormUser from "../components/forms/FormUser.jsx";
 const PageInscription = () => {
   const navigate = useNavigate();
 
-  const enregistrerUtilisateurSoumis = async (utilisateurSoumis) => {
+  const enregistrerUtilisateurDepuisFormulaire = async (donneesFormulaire) => {
     try {
-      const reponse = await axios.post(URLS.USER_REGISTER, utilisateurSoumis);
+      const newRegistredUser = {
+        identifiant: donneesFormulaire.get('identifiant'),
+        mdp: donneesFormulaire.get('mdp'),
+        email: donneesFormulaire.get('email'),
+        prenom: donneesFormulaire.get('prenom')
+      }
+      await axios.post(URLS.USER_REGISTER, newRegistredUser);
       alert("Inscription réussie ! Vous pouvez vous connecter !");
       navigate("/");
-    } catch ( {response} ) { // déconstruit l'objet habituellement catché en ne prenant que la sous-propriété response
+    } catch ({response}) {
       alert(response.data.error); }
-  };
+  }
 
   return (
     <>
       <h1>INSCRIPTION</h1>
-      <FormUser fonctionPropsSoumissionFormulaire={enregistrerUtilisateurSoumis} />
+      <FormUser fonctionPropsSoumissionFormulaire={enregistrerUtilisateurDepuisFormulaire} register={true} />
     </>
   );
 };
