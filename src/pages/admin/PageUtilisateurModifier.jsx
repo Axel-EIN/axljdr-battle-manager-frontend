@@ -16,9 +16,12 @@ const PageUtilisateurModifier = () => {
 
   useEffect( () => { recupererUnUtilisateur(utilisateurID); }, []);
 
-  const modifierUtilisateurSoumis = async (utilisateurSoumis) => {
+  const modifierUtilisateurDepuisFormulaire = async (donneesFormulaire) => {
     try {
-      await axios.put( URLS.USER_EDIT + '/' + utilisateurID, utilisateurSoumis, { withCredentials: true } );
+      await axios.put( URLS.USER_EDIT + '/' + utilisateurID, donneesFormulaire, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        withCredentials: true
+      });
       navigate("/admin"); // Rédirection sur la page admin
       alert("L'Utilisateur a bien été modifié !");
     } catch ({response}) {
@@ -27,12 +30,9 @@ const PageUtilisateurModifier = () => {
 
   return (
     <>
-      <h1>MODIFICATION UTILISATEUR</h1>
+      <h1>MODIFICATION UTILISATEUR : {utilisateurAmodifier?.identifiant}</h1>
       {utilisateurAmodifier ?
-        <>
-          TEST avec identifiant {utilisateurAmodifier.identifiant}
-          <FormUser fonctionPropsSoumissionFormulaire={modifierUtilisateurSoumis} utilisateurInitial={utilisateurAmodifier} admin={true} />
-        </>
+        <FormUser fonctionPropsSoumissionFormulaire={modifierUtilisateurDepuisFormulaire} utilisateurInitial={utilisateurAmodifier} />
         :
         <p>Chargement des données de l'utilisateur...</p>
       }
