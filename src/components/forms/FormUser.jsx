@@ -32,9 +32,8 @@ const FormUser = ({ fonctionPropsSoumissionFormulaire, utilisateurInitial = fals
     if (avatarChange === true && avatar && avatar != '') utilisateurSoumis.avatar = avatar;
     if (roleChange === true && role && role != '') utilisateurSoumis.role = role;
     
-    if (utilisateurInitial === false && utilisateurSoumis.identifiant && utilisateurSoumis.mdp && utilisateurSoumis.email && utilisateurSoumis.prenom && utilisateurSoumis.avatar)
+    if (utilisateurInitial === false && utilisateurSoumis.identifiant && utilisateurSoumis.mdp && utilisateurSoumis.email && utilisateurSoumis.prenom)
       fonctionPropsSoumissionFormulaire(utilisateurSoumis);
-
     else if (utilisateurInitial && Object.keys(utilisateurInitial).length > 0)
       {
         if (identifiantChange || mdpChange || emailChange || prenomChange || avatarChange || roleChange)
@@ -50,16 +49,16 @@ const FormUser = ({ fonctionPropsSoumissionFormulaire, utilisateurInitial = fals
     <form onSubmit={soumettreFormulaire}>
 
       <label htmlFor="identifiant">Identifiant :</label>
-      <input type="text" name="identifiant" value={identifiant} onChange={ (event) => { setIdentifiant(event.target.value); setIdentifiantChange(true); }  } />
+      <input required type="text" name="identifiant" value={identifiant} onChange={ (event) => { setIdentifiant(event.target.value); setIdentifiantChange(true); }  } />
 
       <label htmlFor="mdp">Mot de passe :</label>
-      <input type="password" name="mdp" value={mdp} onChange={(event) => { setMdp(event.target.value); setMdpChange(true); } } />
+      <input required={utilisateurInitial == false} type="password" name="mdp" value={mdp} onChange={(event) => { setMdp(event.target.value); setMdpChange(true); } } />
     
       <label htmlFor="email">Email :</label>
-      <input type="email" name="email" value={email} onChange={(event) => { setEmail(event.target.value); setEmailChange(true); } } />
+      <input required type="email" name="email" value={email} onChange={(event) => { setEmail(event.target.value); setEmailChange(true); } } />
 
       <label htmlFor="prenom">Prénom</label>
-      <input type="text" name="prenom" value={prenom} onChange={(event) => { setPrenom(event.target.value); setPrenomChange(true); } } />
+      <input required type="text" name="prenom" value={prenom} onChange={(event) => { setPrenom(event.target.value); setPrenomChange(true); } } />
 
       <label htmlFor="avatar">Avatar</label>
       <input type="avatar" name="avatar" value={avatar} onChange={(event) => { setAvatar(event.target.value); setAvatarChange(true); } } />
@@ -67,7 +66,7 @@ const FormUser = ({ fonctionPropsSoumissionFormulaire, utilisateurInitial = fals
       {admin &&
         <>
           <label htmlFor="role">Role</label>
-          <select required={utilisateurInitial != false} name="role" id="role" value={role} onChange={(event) => { setRole(event.target.value); setRoleChange(true); } } >
+          <select required name="role" id="role" value={role} onChange={(event) => { setRole(event.target.value); setRoleChange(true); } } >
             <option defaultValue value="user">Utilisateur</option>
             <option value="mj">Maître du Jeu</option>
             <option value="admin">Administrateur</option>
