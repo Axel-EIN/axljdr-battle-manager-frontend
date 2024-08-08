@@ -19,7 +19,8 @@ const PageMonCompte = () => {
             Votre Rôle : <strong>{utilisateur.role}</strong>
             <br/><br/>
             Votre Avatar : <strong>{utilisateur.avatar}</strong>
-            <br/><img src={utilisateur.avatar} alt="Avatar de l'Utilisateur" />
+            <br/>
+            {utilisateur.avatar? <img src={'http://localhost:8080/' + utilisateur.avatar} alt="Avatar de l'Utilisateur" /> : <img src={'https://i.pravatar.cc/96'} />}
         </>
     );
 };
