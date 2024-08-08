@@ -6,9 +6,13 @@ import FormUser from "../../components/forms/FormUser.jsx";
 const PageUtilisateurCreer = () => {
   const navigate = useNavigate();
 
-  const creerUtilisateurSoumis = async (utilisateurSoumis) => {
+  const creerUtilisateurDepuisFormulaire = async (donneesFormulaire) => {
     try {
-      await axios.post( URLS.USER_CREATE, utilisateurSoumis, { withCredentials: true } );
+      await axios.post( URLS.USER_CREATE, donneesFormulaire, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        withCredentials: true
+      });
+
       alert("L'utilisateur a bien été crée !");
       navigate("/admin");
     } catch ({response}) {
@@ -18,7 +22,7 @@ const PageUtilisateurCreer = () => {
   return (
     <>
       <h1>CRÉATION UTILISATEUR</h1>
-      <FormUser fonctionPropsSoumissionFormulaire={creerUtilisateurSoumis} admin={true} />
+      <FormUser fonctionPropsSoumissionFormulaire={creerUtilisateurDepuisFormulaire} />
     </>
   );
 };
