@@ -20,9 +20,9 @@ const PageUtilisateurModifier = () => {
     try {
       await axios.put( URLS.USER_EDIT + '/' + utilisateurID, utilisateurSoumis, { withCredentials: true } );
       navigate("/admin"); // Rédirection sur la page admin
-    } catch (erreur) {
-      console.error(erreur.message);
-    }
+      alert("L'Utilisateur a bien été modifié !");
+    } catch ({response}) {
+      alert(response.data.error); }
   }
 
   return (
