@@ -15,39 +15,26 @@ const PageConnexion = () => {
   // Fonction qui se déclenche pour gérer le formulaire quand on appuie sur le bouton valider
   const gererFormulaire = async (event) => {
     event.preventDefault(); // On previent le rechargement de page par défaut
-
     try {
       await connecterUtilisateur(identifiant, mdp);
-      navigate("/"); // Rédirection à l'accueil
-    } catch (error) {
-      console.error(error.message);
-      alert(error.response.data);
-    }
+      navigate("/");
+    } catch ({response}) {
+      alert(response.data.error); }
   };
 
-  return ( // Affichage de la vue
+  return (
     <>
       <h1>PAGE CONNEXION</h1>
       <form onSubmit={gererFormulaire}>
-        Identifiant :<br />
-        <input
-          type="text"
-          id="identifiant"
-          name="identifiant"
-          value={identifiant}
-          onChange={(event) => setIdentifiant(event.target.value)}
-        />
-        <br />
-        Mot de passe :<br />
-        <input
-          type="password"
-          name="mdp"
-          id="mdp"
-          value={mdp}
-          onChange={(event) => setMdp(event.target.value)}
-        />
-        <br />
+
+        <label htmlFor="identifiant" >Identifiant :</label>
+        <input type="text" id="identifiant" name="identifiant" value={identifiant} onChange={(event) => setIdentifiant(event.target.value)} />
+
+        <label htmlFor="mdp" >Mot de passe :</label>
+        <input type="password" name="mdp" id="mdp" value={mdp} onChange={(event) => setMdp(event.target.value)} />
+
         <button type="submit">Se connecter</button>
+        
       </form>
     </>
   );
