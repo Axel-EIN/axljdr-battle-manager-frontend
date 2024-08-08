@@ -22,9 +22,13 @@ const PageAdmin = () => {
     }
 
     const supprimerUtilisateur = async (utilisateurID) => {
-        const instance = axios.create({withCredentials: true})
-        const reponse = await instance.delete(URLS.USER_DELETE + '/' + utilisateurID);
-        setReload(true);
+        try {
+            const instance = axios.create({withCredentials: true})
+            const reponse = await instance.delete(URLS.USER_DELETE + '/' + utilisateurID);
+            alert("L'Utilisateur a bien été supprimé !");
+            setReload(true);
+        } catch ({response}) {
+            alert(response.data.error); }
     }
 
     return (
@@ -56,7 +60,7 @@ const PageAdmin = () => {
                                 <td>{utilisateur.identifiant}</td>
                                 <td>{utilisateur.email}</td>
                                 <td>{utilisateur.prenom}</td>
-                                <td>{utilisateur.avatar}</td>
+                                <td>{utilisateur.avatar? <img src={`http://localhost:8080/${utilisateur.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
                                 <td>{utilisateur.role}</td>
                                 <td><Link to={'/admin/utilisateur/modifier' + '/' + utilisateur.id}><EditIcon /></Link></td>
                                 <td><DeleteIcon onClick={() => supprimerUtilisateur(utilisateur.id)} /></td>
