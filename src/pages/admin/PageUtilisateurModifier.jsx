@@ -1,98 +1,41 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { URLS } from "../../constants/urls.js";
-import { useParams } from "react-router-dom";
+import { URLS } from '../../constants/urls.js';
+import FormUser from "../../components/forms/FormUser.jsx";
 
 const PageUtilisateurModifier = () => {
-  const [utilisateur, setUtilisateur] = useState("");
-
-  const [identifiant, setIdentifiant] = useState("");
-  const [mdp, setMdp] = useState(null);
-  const [email, setEmail] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [role, setRole] = useState("user");
-  const navigate = useNavigate();
-
   const { utilisateurID } = useParams();
+  const navigate = useNavigate();
+  const [ utilisateurAmodifier, setUtilisateurAmodifier ] = useState(null);
 
-  useEffect( () => {
-    recupererUnUtilisateur(utilisateurID);
-  }, []);
+  const recupererUnUtilisateur = async (ID) => {
+    const { data } = await axios.get(URLS.USER_ONE + '/' + ID);
+    setUtilisateurAmodifier(data);
+  }
 
-  const recupererUnUtilisateur = async (utilisateurID) => {
+  useEffect( () => { recupererUnUtilisateur(utilisateurID); }, []);
+
+  const modifierUtilisateurSoumis = async (utilisateurSoumis) => {
     try {
-      const { data, status } = await axios.get(URLS.USER_ONE + '/' + utilisateurID);
-
-      if (status == 200) {
-        const utilisateurTrouve = data;
-        setUtilisateur(utilisateurTrouve);
-
-        setIdentifiant(utilisateurTrouve.identifiant);
-        setEmail(utilisateurTrouve.email);
-        setPrenom(utilisateurTrouve.prenom);
-        setAvatar(utilisateurTrouve.avatar);
-        setRole(utilisateurTrouve.role);
-      }
-
+      await axios.put( URLS.USER_EDIT + '/' + utilisateurID, utilisateurSoumis, { withCredentials: true } );
+      navigate("/admin"); // Rédirection sur la page admin
     } catch (erreur) {
       console.error(erreur.message);
     }
   }
 
-  const soumettreFormulaire = async (event) => {
-    event.preventDefault(); // Prévient le comportement de rechargement de page par défaut sur le boutton
-
-    let utilisateurModifie = {
-      identifiant: identifiant,
-      email: email,
-      prenom: prenom,
-      avatar: avatar,
-      role: role,
-    }
-
-    if (mdp)
-      utilisateurModifie = {...utilisateurModifie, mdp: mdp}
-
-    try {
-      await axios.put(
-        URLS.USER_EDIT + '/' + utilisateur.id, utilisateurModifie, { withCredentials: true }
-      );
-      navigate("/admin"); // Rédirection sur page admin
-    } catch (erreur) { console.error(erreur.message); }
-  };
-
   return (
     <>
-      <h1>Page de Modification d'un Utilisateur !</h1>
-
-      <form onSubmit={soumettreFormulaire}>
-
-        <label htmlFor="identifiant">Identifiant :</label>
-        <input type="text" name="identifiant" value={identifiant} onChange={(event) => setIdentifiant(event.target.value)} />
-
-        <label htmlFor="mdp">Mot de passe :</label>
-        <input type="password" name="mdp" onChange={(event) => setMdp(event.target.value)} />
- 
-        <label htmlFor="email">Email :</label>
-        <input type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-
-        <label htmlFor="prenom">Prénom</label>
-        <input type="text" name="prenom" value={prenom} onChange={(event) => setPrenom(event.target.value)} />
-
-        <label htmlFor="avatar">Avatar</label>
-        <input type="avatar" name="avatar" value={avatar} onChange={(event) => setAvatar(event.target.value)} />
-
-        <label htmlFor="role">Role</label>
-        <select name="role" id="role" value={role} onChange={(event) => setRole(event.target.value)} >
-          <option value="user">Utilisateur</option>
-          <option value="mj">Maître du Jeu</option>
-          <option value="admin">Administrateur</option>
-        </select>
-
-        <button type="submit">Modifier l'utilisateur</button>
-      </form>
+      <h1>MODIFICATION UTILISATEUR</h1>
+      {utilisateurAmodifier ?
+        <>
+          TEST avec identifiant {utilisateurAmodifier.identifiant}
+          <FormUser fonctionPropsSoumissionFormulaire={modifierUtilisateurSoumis} utilisateurInitial={utilisateurAmodifier} admin={true} />
+        </>
+        :
+        <p>Chargement des données de l'utilisateur...</p>
+      }
     </>
   );
 };
