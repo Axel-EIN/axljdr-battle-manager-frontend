@@ -9,10 +9,10 @@ const PageUtilisateurCreer = () => {
   const creerUtilisateurSoumis = async (utilisateurSoumis) => {
     try {
       await axios.post( URLS.USER_CREATE, utilisateurSoumis, { withCredentials: true } );
+      alert("L'utilisateur a bien été crée !");
       navigate("/admin");
-    } catch (erreur) {
-      console.error(erreur.message);
-    }
+    } catch ({response}) {
+      alert(response.data.error); }
   };
 
   return (
