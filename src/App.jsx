@@ -14,6 +14,8 @@ import PageUtilisateurCreer from "./pages/admin/PageUtilisateurCreer.jsx";
 import PageUtilisateurModifier from "./pages/admin/PageUtilisateurModifier.jsx";
 import PagePersonnageCreer from "./pages/mj/PagePersonnageCreer.jsx";
 import PagePersonnageModifier from "./pages/mj/PagePersonnageModifier.jsx";
+import PageCombatCreer from "./pages/mj/PageCombatCreer.jsx";
+import PageCombatModifier from "./pages/mj/PageCombatModifier.jsx";
 import PageMj from "./pages/mj/PageMj.jsx";
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
             <Route path="/mj" element={<PageMj />} />
             <Route path="/mj/personnage/creer" element={<PagePersonnageCreer />} />
             <Route path="/mj/personnage/modifier/:personnageID" element={<PagePersonnageModifier />} />
+            <Route path="/mj/combat/creer" element={<PageCombatCreer />} />
+            <Route path="/mj/combat/modifier/:combatID" element={<PageCombatModifier />} />
           </Route>
 
           <Route element={<TemplateAdmin />} >
