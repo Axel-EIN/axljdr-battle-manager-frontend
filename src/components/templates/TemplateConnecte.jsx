@@ -11,7 +11,7 @@ const TemplateConnecte = () => {
   return (
     <>
       {!loading && (
-        <>{utilisateur ? <Template /> : <Navigate to="/connexion" />}</>
+        <>{utilisateur ? <Template /> : <>{console.log("Désolé, vous n'êtes pas Connecté, vous allez être redirigé sur la page de connexion.")}<Navigate to="/connexion" /></>}</>
       )}
     </>
   );
