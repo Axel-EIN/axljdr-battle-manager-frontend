@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { URLS } from "../constants/urls.js";
-import FormUser from "../components/forms/FormUser.jsx";
+import FormUtilisateur from "../components/forms/FormUtilisateur.jsx";
 
 const PageInscription = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const PageInscription = () => {
   return (
     <>
       <h1>INSCRIPTION</h1>
-      <FormUser fonctionPropsSoumissionFormulaire={enregistrerUtilisateurDepuisFormulaire} register={true} />
+      <FormUtilisateur fonctionPropsSoumissionFormulaire={enregistrerUtilisateurDepuisFormulaire} register={true} />
     </>
   );
 };
