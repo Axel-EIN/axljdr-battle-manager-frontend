@@ -15,12 +15,13 @@ export const URLS = {
     // PERSONNAGE
     CHAR_ADD: `${BASE_URL}/api/personnage/ajouter`,
     CHAR_ALL: `${BASE_URL}/api/personnage/tous`,
-    CHAR_EDIT: `${BASE_URL}/api/personnage/modifier/:id`,
-    CHAR_DELETE: `${BASE_URL}/api/personnage/supprimer/:id`,
+    CHAR_ONE: `${BASE_URL}/api/personnage/un`,
+    CHAR_EDIT: `${BASE_URL}/api/personnage/modifier`,
+    CHAR_DELETE: `${BASE_URL}/api/personnage/supprimer`,
 
     // COMBAT
     BATTLE_ADD: `${BASE_URL}/api/combat/ajouter`,
     BATTLE_ALL: `${BASE_URL}/api/combat/tous`,
-    BATTLE_EDIT: `${BASE_URL}/api/combat/modifier/:id`,
-    BATTLE_DELETE: `${BASE_URL}/api/combat/supprimer/:id`,
+    BATTLE_EDIT: `${BASE_URL}/api/combat/modifier`,
+    BATTLE_DELETE: `${BASE_URL}/api/combat/supprimer`,
 }
