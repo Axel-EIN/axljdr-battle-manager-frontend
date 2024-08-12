@@ -22,6 +22,7 @@ export const URLS = {
     // COMBAT
     BATTLE_ADD: `${BASE_URL}/api/combat/ajouter`,
     BATTLE_ALL: `${BASE_URL}/api/combat/tous`,
+    BATTLE_ONE: `${BASE_URL}/api/combat/un`,
     BATTLE_EDIT: `${BASE_URL}/api/combat/modifier`,
     BATTLE_DELETE: `${BASE_URL}/api/combat/supprimer`,
 }
