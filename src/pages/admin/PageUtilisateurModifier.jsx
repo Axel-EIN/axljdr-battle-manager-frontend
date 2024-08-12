@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { URLS } from '../../constants/urls.js';
-import FormUser from "../../components/forms/FormUser.jsx";
+import FormUtilisateur from "../../components/forms/FormUtilisateur.jsx";
 
 const PageUtilisateurModifier = () => {
   const { utilisateurID } = useParams();
@@ -32,7 +32,7 @@ const PageUtilisateurModifier = () => {
     <>
       <h1>MODIFICATION UTILISATEUR : {utilisateurAmodifier?.identifiant}</h1>
       {utilisateurAmodifier ?
-        <FormUser fonctionPropsSoumissionFormulaire={modifierUtilisateurDepuisFormulaire} utilisateurInitial={utilisateurAmodifier} />
+        <FormUtilisateur fonctionPropsSoumissionFormulaire={modifierUtilisateurDepuisFormulaire} utilisateurInitial={utilisateurAmodifier} />
         :
         <p>Chargement des données de l'utilisateur...</p>
       }
