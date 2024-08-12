@@ -30,7 +30,7 @@ function Header() {
       }
       <div id="navbar">
         <div id="logo">
-          <img src="logo-axljdrbattle.png" alt="Logo AXL JDR Battle" />
+          <img src="/logo-axljdrbattle.png" alt="Logo AXL JDR Battle" />
         </div>
         <nav>
           <ul>
