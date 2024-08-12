@@ -35,7 +35,7 @@ function PageAccueil() {
                     (
                       <>
                         <ul>
-                          { combats.map( (combat, cle) => ( <li key={cle}>{combat.titre} | {combat.status}</li> ) )}
+                          { combats.map( (combat, cle) => ( <li key={cle}>{combat.titre} | {combat.statut}</li> ) )}
                         </ul>
                       </>
                     )
