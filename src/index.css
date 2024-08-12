@@ -49,6 +49,10 @@ form {
   button { margin-top: 1rem; }
 }
 
+table {
+  img { min-width: 64px; max-width: 128px; }
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
