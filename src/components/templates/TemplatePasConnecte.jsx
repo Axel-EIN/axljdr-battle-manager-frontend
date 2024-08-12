@@ -12,7 +12,7 @@ const TemplatePasConnecte = () => {
   return (
     <>
       {!loading && (
-        <>{!utilisateur ? <Template /> : <Navigate to="/mon-compte" />}</>
+        <>{!utilisateur ? <Template /> : <>{console.log("Désolé, vous êtes déjà connecté, vous allez être redirigé sur la page de votre compte.")}<Navigate to="/mon-compte" /></>}</>
       )}
     </>
   );
