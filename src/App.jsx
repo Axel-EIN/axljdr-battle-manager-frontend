@@ -12,7 +12,9 @@ import PageMonCompte from "./pages/PageMonCompte.jsx";
 import PageAdmin from "./pages/admin/PageAdmin.jsx";
 import PageUtilisateurCreer from "./pages/admin/PageUtilisateurCreer.jsx";
 import PageUtilisateurModifier from "./pages/admin/PageUtilisateurModifier.jsx";
-import PageMj from "./pages/PageMj.jsx";
+import PagePersonnageCreer from "./pages/mj/PagePersonnageCreer.jsx";
+import PagePersonnageModifier from "./pages/mj/PagePersonnageModifier.jsx";
+import PageMj from "./pages/mj/PageMj.jsx";
 
 function App() {
   // Définition des Routes
@@ -37,6 +39,8 @@ function App() {
 
           <Route element={<TemplateMJ />} >
             <Route path="/mj" element={<PageMj />} />
+            <Route path="/mj/personnage/creer" element={<PagePersonnageCreer />} />
+            <Route path="/mj/personnage/modifier/:personnageID" element={<PagePersonnageModifier />} />
           </Route>
 
           <Route element={<TemplateAdmin />} >
