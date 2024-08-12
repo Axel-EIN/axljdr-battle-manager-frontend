@@ -11,7 +11,7 @@ const TemplateMJ = () => {
   return (
     <>
       {!loading && (
-        <>{utilisateur && utilisateur.role == 'mj' ? <Template /> : <Navigate to="/connexion" />}</>
+        <>{utilisateur && utilisateur.role == 'mj' ? <Template /> : <>{console.log("Désolé, vous n'êtes pas MJ, vous allez être redirigé sur la page de connexion.")}<Navigate to="/connexion" /></>}</>
       )}
     </>
   );
