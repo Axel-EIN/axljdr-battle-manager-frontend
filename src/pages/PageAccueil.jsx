@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { URLS } from '../constants/urls.js';
+import { Link } from "react-router-dom";
 
 function PageAccueil() {
   const [combats, setCombats] = useState([]);
@@ -35,7 +36,7 @@ function PageAccueil() {
                     (
                       <>
                         <ul>
-                          { combats.map( (combat, cle) => ( <li key={cle}>{combat.titre} | {combat.statut}</li> ) )}
+                          { combats.map( (combat, cle) => ( <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre} | {combat.statut}</Link></li> ) )}
                         </ul>
                       </>
                     )
