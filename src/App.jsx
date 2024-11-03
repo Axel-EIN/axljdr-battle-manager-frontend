@@ -16,6 +16,7 @@ import PagePersonnageCreer from "./pages/mj/PagePersonnageCreer.jsx";
 import PagePersonnageModifier from "./pages/mj/PagePersonnageModifier.jsx";
 import PageCombatCreer from "./pages/mj/PageCombatCreer.jsx";
 import PageCombatModifier from "./pages/mj/PageCombatModifier.jsx";
+import PageCombat from "./pages/PageCombat.jsx";
 import PageMj from "./pages/mj/PageMj.jsx";
 
 function App() {
@@ -28,11 +29,12 @@ function App() {
 
           <Route path="/" element={<Template />} >
             <Route index element={<PageAccueil />} />
+            <Route path="/combat/:combatID" element={<PageCombat />} />
           </Route>
 
           <Route element={<TemplatePasConnecte />} >
             <Route path="/connexion" element={<PageConnexion />} />
-            <Route path="/inscription" element={<PageInscription />} />
+            <Route path="/inscription" element={<PageInscription />} />       
           </Route>
 
           <Route element={<TemplateConnecte />} >
