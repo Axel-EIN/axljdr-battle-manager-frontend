@@ -12,7 +12,6 @@ const PageCombat = () => {
   const recupererCombat = async (ID) => {
     const { data } = await axios.get(URLS.BATTLE_ONE + '/' + ID);
     setCombat(data);
-    console.log(data);
   }
 
   useEffect( () => { recupererCombat(combatID); }, []);
@@ -24,9 +23,9 @@ const PageCombat = () => {
       <h2>Statut : {combat?.statut}</h2>
       <h2>Participants :</h2>
       <ul>
-        {combat?.participants && combat?.participants.map((participant, index) => <li key={participant.id}>{participant.prenom}</li>)}
+        {combat?.Personnages && combat?.Personnages.map((personnage, index) => <li key={personnage.id}>{personnage.prenom}</li>)}
       </ul>
-      <button>Rejoindre en tant que {utilisateur.prenom}</button>
+      <button>Rejoindre en tant que {utilisateur?.prenom}</button>
     </>
   );
 };
