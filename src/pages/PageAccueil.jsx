@@ -2,12 +2,23 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { URLS } from '../constants/urls.js';
 import { Link } from "react-router-dom";
+import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
+
+const socket = io("http://localhost:8080"); // Initialisation de la connexion WebSocket avec le Back-End
 
 function PageAccueil() {
   const [combats, setCombats] = useState([]);
 
   useEffect(() => { // grâce à useEffect on monte au chargement la fonction recupererCombats
     recupererCombats();
+
+    socket.on('newBattle', (reponseNewBattle) => { // écoute de l'évenement websocket newBattle et action si délenché
+      setCombats((prevCombats) => [...prevCombats, reponseNewBattle]);
+    });
+
+    return () => { // Nettoyage de l'écouteur d'événement newBattle lors du démontage du composant
+      socket.off('newBattle');
+    };
   }, []);
 
   const recupererCombats = async () => {
