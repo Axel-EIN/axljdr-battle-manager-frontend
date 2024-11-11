@@ -11,6 +11,7 @@ const PageCombat = () => {
   const { utilisateur, deconnecterUtilisateur } = useContext(ContexteUtilisateur);
   const { combatID } = useParams();
   const [ combat, setCombat ] = useState(null);
+  const [ logs, setLogs ] = useState([]);
   const [ isDeleted, setIsDeleted ] = useState(false);
 
   const recupererCombat = async (ID) => {
@@ -21,6 +22,23 @@ const PageCombat = () => {
   useEffect(() => {
     const socket = io("http://localhost:8080"); // Initialisation de la connexion WebSocket avec le Back-End
     recupererCombat(combatID);
+
+    socket.on('editedBattle', () => {
+      recupererCombat(combatID);
+      const log = 'Le combat a été modifié par le MJ';
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('deletedBattle', () => {
+      setIsDeleted(true);
+      const log = 'Le combat a été supprimé par le MJ';
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    return () => { // Nettoyage dees écouteurs d'événement lors du démontage du composant
+      socket.off('editedBattle');
+      socket.off('deletedBattle');
+    };
   }, []);
 
   const demarrerCombat = async () => {
@@ -64,6 +82,9 @@ const PageCombat = () => {
             )}
           </div>
           <h2>Logs :</h2>
+          <ul className="logs">
+            {logs.map((element, index) => <li key={index}>{element}</li>)}
+          </ul>
         </>
       }
     </>
