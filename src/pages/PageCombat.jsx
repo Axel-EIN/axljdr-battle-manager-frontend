@@ -21,6 +21,18 @@ const PageCombat = () => {
     recupererCombat(combatID);
   }, []);
 
+  const demarrerCombat = async () => {
+    await axios.put(URLS.BATTLE_START + '/' + combatID);
+  }
+
+  const arreterCombat = async () => {
+    await axios.put(URLS.BATTLE_STOP + '/' + combatID);
+  }
+
+  const recommencerCombat = async () => {
+    await axios.put(URLS.BATTLE_RESTART + '/' + combatID);
+  }
+
   return (
     <>
       <h1 className="battle-title">{combat?.titre}</h1>
@@ -39,6 +51,17 @@ const PageCombat = () => {
               {combat?.Personnages && combat?.Personnages.filter((element) => element.Participation.team === 2).map((personnage) => <BattlePortrait personnage={personnage} key={personnage.id} />)}
             </div>
           </div>
+          <div className="actions">
+            {utilisateur && utilisateur.role == 'mj' && (
+              <>
+                {combat?.statut === 'waiting' && <button className="btn-start" onClick={demarrerCombat}>Démarrer</button>}
+                {combat?.statut === 'paused' && <button className="btn-start" onClick={demarrerCombat}>Reprendre</button>}
+                {combat?.statut === 'started' && <button className="btn-stop" onClick={arreterCombat}>Mettre en Pause</button>}
+                {combat?.roundCourant != 0 && <button className="btn-restart" onClick={recommencerCombat}>Recommencer</button>}
+              </>
+            )}
+          </div>
+          <h2>Logs :</h2>
         </>
       }
     </>
