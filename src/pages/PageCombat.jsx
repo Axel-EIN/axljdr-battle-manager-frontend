@@ -13,6 +13,7 @@ const PageCombat = () => {
   const [ combat, setCombat ] = useState(null);
   const [ logs, setLogs ] = useState([]);
   const [ isDeleted, setIsDeleted ] = useState(false);
+  const [ donneesTourJeu, setDonneesTourJeu ] = useState('attaque');
 
   const recupererCombat = async (ID) => {
     const { data } = await axios.get(URLS.BATTLE_ONE + '/' + ID);
@@ -59,6 +60,12 @@ const PageCombat = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
+    socket.on('nextTurn', () => {
+      recupererCombat(combatID);
+      const log = "C'est au tour d'un nouveau personnage de jouer";
+      setLogs((prevState) => [...prevState, log]);
+    });
+
     return () => { // Nettoyage dees écouteurs d'événement lors du démontage du composant
       socket.off('editedBattle');
       socket.off('deletedBattle');
@@ -66,6 +73,7 @@ const PageCombat = () => {
       socket.off('pausedBattle');
       socket.off('resumedBattle');
       socket.off('restartedBattle');
+      socket.off('nextTurn');
     };
   }, []);
 
@@ -79,6 +87,14 @@ const PageCombat = () => {
 
   const recommencerCombat = async () => {
     await axios.put(URLS.BATTLE_RESTART + '/' + combatID);
+  }
+
+  const jouerTour = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.put(URLS.BATTLE_PLAYTURN + '/' + combatID, { posture: donneesTourJeu }, { withCredentials: true } );
+    }
+    catch ({response}) { alert(response.data.error); }
   }
 
   return (
@@ -98,6 +114,20 @@ const PageCombat = () => {
             <div className="team">
               {combat?.Participations && combat?.Participations.filter((participation) => participation.team === 2).map((participation) => <BattlePortrait participation={participation} key={participation.Personnage.id} />)}
             </div>
+          </div>
+          <div className="turn-actions">
+            {utilisateur && utilisateur.id === combat?.TourCourant?.Personnage.UtilisateurId &&
+              <form>
+                <select value={donneesTourJeu} onChange={ (event) => { setDonneesTourJeu(event.target.value); console.log('onChange :', donneesTourJeu) } }>
+                  <option value="esquive">ESQUIVE</option>
+                  <option value="defense">DEFENSE</option>
+                  <option value="centre">CENTRE</option>
+                  <option value="attaque">ATTAQUE</option>
+                  <option value="assaut">ASSAUT</option>
+                </select>
+                <button className="btn-start" onClick={jouerTour}>Jouer son Tour</button>
+              </form>
+            }
           </div>
           <div className="actions">
             {utilisateur && utilisateur.role == 'mj' && combat?.Participations.length > 0 && (
