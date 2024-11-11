@@ -1,3 +1,4 @@
+import "./Combat.css";
 import { useEffect, useState, useContext } from "react";
 import { ContexteUtilisateur } from "../contexts/contexteUtilisateur";
 import { useParams } from "react-router-dom";

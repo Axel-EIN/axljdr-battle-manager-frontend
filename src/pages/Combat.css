@@ -1,0 +1,60 @@
+.battle-title {
+  text-align: center;
+}
+
+.battle-status {
+  text-align: center;
+}
+
+.battle-round {
+  text-align: center;
+}
+
+.fight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .team {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  
+    .character {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    
+      .portrait-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+        .portrait-medium {
+          width: 96px;
+          border-radius: 1rem;
+        }
+      }
+    
+      .stats {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  .btn-start {
+  }
+}
+
+.logs {
+  background-color: #808080;
+}
+
