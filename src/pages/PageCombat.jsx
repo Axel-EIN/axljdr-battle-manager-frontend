@@ -35,9 +35,37 @@ const PageCombat = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
+    socket.on('initiativeRolled', (reponseObjetCombat) => {
+      recupererCombat(combatID);
+      const log = `Le combat a été démarré par le MJ avec un jet d'initiative, le premier joueur est ${reponseObjetCombat.tourcourant.prenom}`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('resumedBattle', () => {
+      recupererCombat(combatID);
+      const log = 'Le combat a été repris par le MJ';
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('pausedBattle', () => {
+      recupererCombat(combatID);
+      const log = 'Le combat a été mis en pause par le MJ';
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('restartedBattle', () => {
+      recupererCombat(combatID);
+      const log = 'Le combat a été reinitialisé par le MJ';
+      setLogs((prevState) => [...prevState, log]);
+    });
+
     return () => { // Nettoyage dees écouteurs d'événement lors du démontage du composant
       socket.off('editedBattle');
       socket.off('deletedBattle');
+      socket.off('initiativeRolled');
+      socket.off('pausedBattle');
+      socket.off('resumedBattle');
+      socket.off('restartedBattle');
     };
   }, []);
 
