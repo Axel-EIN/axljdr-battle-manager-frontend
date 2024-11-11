@@ -28,4 +28,5 @@ export const URLS = {
     BATTLE_START: `${BASE_URL}/api/combat/demarrer`,
     BATTLE_STOP: `${BASE_URL}/api/combat/arreter`,
     BATTLE_RESTART: `${BASE_URL}/api/combat/recommencer`,
+    BATTLE_PLAYTURN: `${BASE_URL}/api/combat/jouer`,
 }
