@@ -4,6 +4,7 @@ import { ContexteUtilisateur } from "../contexts/contexteUtilisateur";
 import { useParams } from "react-router-dom";
 import { URLS } from '../constants/urls.js';
 import axios from 'axios';
+import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
 import BattlePortrait from "../components/characters/BattlePortrait.jsx";
 
 const PageCombat = () => {
@@ -18,6 +19,7 @@ const PageCombat = () => {
   }
 
   useEffect(() => {
+    const socket = io("http://localhost:8080"); // Initialisation de la connexion WebSocket avec le Back-End
     recupererCombat(combatID);
   }, []);
 
