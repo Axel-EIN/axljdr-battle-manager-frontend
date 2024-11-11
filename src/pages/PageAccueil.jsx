@@ -30,42 +30,20 @@ function PageAccueil() {
     <>
       <h1>PAGE ACCUEIL</h1>
 
-      <h2>Liste des Combats :</h2>
-
-      {!combats ?
-        (
-          <>Les Combats n'existent pas !</>
-        )
-        :
-        (
-          <>
-            {Array.isArray(combats) ?
-              (
-                <>
-                  Les Combats sont dans un tableau !
-                  {combats.length > 0 ?
-                    (
-                      <>
+      <h2>Combats en cours :</h2>
+      <ul>
+        {combats.filter((element) => element.statut === 'started' || element.statut === 'paused').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
+      </ul>
+      <h2>Combats en attente :</h2>
                         <ul>
-                          { combats.map( (combat, cle) => ( <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre} | {combat.statut}</Link></li> ) )}
+        {combats.filter((element) => element.statut === 'waiting').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
+      </ul>
+      <h2>Combats terminés :</h2>
+      <ul>
+        {combats.filter((element) => element.statut === 'finished').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
                         </ul>
                       </>
-                    )
-                    :
-                    (<><br/>Il n'y a pas encore de combats ! </>)
-                  }
-                </>
-              )
-              :
-              (
-                <>Ce n'est pas un tableau</>
-              )
-            }
-          </>
-        )
-      }
-    </>
-  )
+  );
 }
 
-export default PageAccueil
+export default PageAccueil;
