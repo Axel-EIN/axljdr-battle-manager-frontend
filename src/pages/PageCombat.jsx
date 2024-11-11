@@ -100,7 +100,7 @@ const PageCombat = () => {
             </div>
           </div>
           <div className="actions">
-            {utilisateur && utilisateur.role == 'mj' && (
+            {utilisateur && utilisateur.role == 'mj' && combat?.Participations.length > 0 && (
               <>
                 {combat?.statut === 'waiting' && <button className="btn-start" onClick={demarrerCombat}>Démarrer</button>}
                 {combat?.statut === 'paused' && <button className="btn-start" onClick={demarrerCombat}>Reprendre</button>}
