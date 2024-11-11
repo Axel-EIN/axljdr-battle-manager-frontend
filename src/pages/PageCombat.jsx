@@ -35,9 +35,9 @@ const PageCombat = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
-    socket.on('initiativeRolled', (reponseObjetCombat) => {
+    socket.on('initiativeRolled', (reponsePrenom) => {
       recupererCombat(combatID);
-      const log = `Le combat a été démarré par le MJ avec un jet d'initiative, le premier joueur est ${reponseObjetCombat.tourcourant.prenom}`;
+      const log = `Le combat a été démarré par le MJ avec un jet d'initiative, le premier joueur est ${reponsePrenom}`;
       setLogs((prevState) => [...prevState, log]);
     });
 
@@ -89,14 +89,14 @@ const PageCombat = () => {
         <>
           <h2 className="battle-status">Statut : {combat?.statut}</h2>
           <h2 className="battle-status">Round Actuel : {combat?.roundCourant}</h2>
-          <h2 className="battle-status">Tour Actuel : {combat?.tourcourant?.prenom}</h2>
+          <h2 className="battle-status">Tour Actuel : {combat?.TourCourant?.Personnage?.prenom}</h2>
           <div className="fight">
             <div className="team">
-              {combat?.Personnages && combat?.Personnages.filter((element) => element.Participation.team === 1).map((personnage) => <BattlePortrait personnage={personnage} key={personnage.id} />)}
+              {combat?.Participations && combat?.Participations.filter((participation) => participation.team === 1).map((participation) => <BattlePortrait participation={participation} key={participation.Personnage.id} />)}
             </div>
             <h1>VS</h1>
             <div className="team">
-              {combat?.Personnages && combat?.Personnages.filter((element) => element.Participation.team === 2).map((personnage) => <BattlePortrait personnage={personnage} key={personnage.id} />)}
+              {combat?.Participations && combat?.Participations.filter((participation) => participation.team === 2).map((participation) => <BattlePortrait participation={participation} key={participation.Personnage.id} />)}
             </div>
           </div>
           <div className="actions">
