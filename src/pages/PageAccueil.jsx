@@ -19,10 +19,19 @@ function PageAccueil() {
     socket.on('newBattle', () => { recupererCombats(); });
     socket.on('editedBattle', () => { recupererCombats(); });
     socket.on('deletedBattle', async () => { recupererCombats(); });
+    socket.on('initiativeRolled', async () => { recupererCombats(); });
+    socket.on('pausedBattle', async () => { recupererCombats(); });
+    socket.on('resumedBattle', async () => { recupererCombats(); });
+    socket.on('restartedBattle', async () => { recupererCombats(); });
+
     return () => { // Nettoyage des écouteurs d'événement lors du démontage du composant
       socket.off('newBattle');
       socket.off('editedBattle');
       socket.off('deletedBattle');
+      socket.off('initiativeRolled');
+      socket.off('pausedBattle');
+      socket.off('resumedBattle');
+      socket.off('restartedBattle');
     };
   }, []);
 
@@ -35,14 +44,14 @@ function PageAccueil() {
         {combats.filter((element) => element.statut === 'started' || element.statut === 'paused').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
       </ul>
       <h2>Combats en attente :</h2>
-                        <ul>
+      <ul>
         {combats.filter((element) => element.statut === 'waiting').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
       </ul>
       <h2>Combats terminés :</h2>
       <ul>
         {combats.filter((element) => element.statut === 'finished').map((combat, cle) => <li key={cle}><Link to={'/combat' + '/' + combat.id} >{combat.titre}</Link></li>)}
-                        </ul>
-                      </>
+      </ul>
+    </>
   );
 }
 
