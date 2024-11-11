@@ -96,6 +96,7 @@ const FormCombat = ({ fonctionPropsSoumissionFormulaire, combatInitial = false }
       <select name="statut" id="statut" value={statut} onChange={ (event) => setStatut(event.target.value) } >
         <option value='waiting'>En attente de démarrage</option>
         <option value='started'>A démarré</option>
+        <option value='paused'>En pause</option>
         <option value='finished'>Terminé</option>
       </select>
 
