@@ -17,8 +17,12 @@ function PageAccueil() {
     recupererCombats();
 
     socket.on('newBattle', () => { recupererCombats(); });
+    socket.on('editedBattle', () => { recupererCombats(); });
+    socket.on('deletedBattle', async () => { recupererCombats(); });
     return () => { // Nettoyage des écouteurs d'événement lors du démontage du composant
       socket.off('newBattle');
+      socket.off('editedBattle');
+      socket.off('deletedBattle');
     };
   }, []);
 
