@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ContexteUtilisateur } from "../../contexts/contexteUtilisateur";
-import './header.css';
+import './Header.css';
 
 function Header() {
   // Récupération de l'utilisateur et de la fonction pour deconnecter via destructuration du contexte utilisateur
