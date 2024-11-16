@@ -237,7 +237,7 @@ const PageCombat = () => {
           </div>
           <h2>Logs :</h2>
           <ul className="logs">
-            {logs.map((element, index) => <li key={index}>{element}</li>)}
+            {logs.map((element, index) => <li key={index}>{element}</li>).reverse()}
           </ul>
         </>
       }
