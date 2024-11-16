@@ -100,15 +100,18 @@ const PageCombat = () => {
   }, []);
 
   const demarrerCombat = async () => {
-    await axios.put(URLS.BATTLE_START + '/' + combatID);
+    try { await axios.put(URLS.BATTLE_START + '/' + combatID); }
+    catch ({response}) { alert(response.data.error); }
   }
 
   const arreterCombat = async () => {
-    await axios.put(URLS.BATTLE_STOP + '/' + combatID);
+    try { await axios.put(URLS.BATTLE_STOP + '/' + combatID); }
+    catch ({response}) { alert(response.data.error); }
   }
 
   const recommencerCombat = async () => {
-    await axios.put(URLS.BATTLE_RESTART + '/' + combatID);
+    try { await axios.put(URLS.BATTLE_RESTART + '/' + combatID); }
+    catch ({response}) { alert(response.data.error); }
   }
 
   const jouerTour = async (event) => {
