@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:8080';
 
 export const URLS = {
     // BASE
-    BASE: `${BASE_URL}/`,
+    BASE_URL: `${BASE_URL}`,
 
     // UTILISATEUR
     USER_REGISTER: `${BASE_URL}/api/utilisateur/inscrire`,
