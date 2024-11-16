@@ -48,11 +48,11 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
       <label htmlFor="prenom">Prénom :</label>
       <input required type="text" name="prenom" value={prenom} onChange={ (event) => setPrenom(event.target.value) } />
     
-      {personnageInitial && personnageInitial.portrait && !portrait && <img src={`http://localhost:8080/${personnageInitial.portrait}`} />}
+      {personnageInitial && personnageInitial.portrait && !portrait && <img src={`${URLS.BASE_URL}/${personnageInitial.portrait}`} />}
       <label htmlFor="portrait">Portrait</label>
       <input type="file" name="portrait" onChange={ (event) => setPortrait(event.target.files[0]) } />
 
-      {personnageInitial && personnageInitial.illustration && !illustration && <img src={`http://localhost:8080/${personnageInitial.illustration}`} />}
+      {personnageInitial && personnageInitial.illustration && !illustration && <img src={`${URLS.BASE_URL}/${personnageInitial.illustration}`} />}
       <label htmlFor="illustration">Illustration :</label>
       <input type="file" name="illustration" onChange={ (event) => setIllustration(event.target.files[0]) } />
 
