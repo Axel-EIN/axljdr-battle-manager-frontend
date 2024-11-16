@@ -60,7 +60,7 @@ const PageAdmin = () => {
                                 <td>{utilisateur.identifiant}</td>
                                 <td>{utilisateur.email}</td>
                                 <td>{utilisateur.prenom}</td>
-                                <td>{utilisateur.avatar? <img src={`http://localhost:8080/${utilisateur.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
+                                <td>{utilisateur.avatar? <img src={`${URLS.BASE_URL}/${utilisateur.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
                                 <td>{utilisateur.role}</td>
                                 <td><Link to={'/admin/utilisateur/modifier' + '/' + utilisateur.id}><EditIcon /></Link></td>
                                 <td><DeleteIcon onClick={() => supprimerUtilisateur(utilisateur.id)} /></td>
