@@ -5,8 +5,7 @@ import './Header.css';
 
 function Header() {
   // Récupération de l'utilisateur et de la fonction pour deconnecter via destructuration du contexte utilisateur
-  const { utilisateur, deconnecterUtilisateur } =
-    useContext(ContexteUtilisateur);
+  const { utilisateur, deconnecterUtilisateur } = useContext(ContexteUtilisateur);
   const navigate = useNavigate();
 
   useEffect(() => {}, [utilisateur]);
