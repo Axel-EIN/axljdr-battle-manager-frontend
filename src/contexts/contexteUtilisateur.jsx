@@ -8,10 +8,6 @@ export const FournisseurUtilisateur = ({ children }) => {
   const [utilisateur, setUtilisateur] = useState(null);
   const [loading, setLoading] = useState(true); // Mise en place d'un système de loading pour attendre que le contexte récupère l'utilisateur courant
   
-  useEffect(() => {
-    recupererUtilisateurCourant();
-  }, []);
-
   // Fonction pour récupérer l'Utilisateur Courant déjà authentifié
   const recupererUtilisateurCourant = async () => {
     try {
@@ -30,6 +26,10 @@ export const FournisseurUtilisateur = ({ children }) => {
       setLoading(false); // Loading terminé
     }
   };
+
+  useEffect(() => {
+    recupererUtilisateurCourant();
+  }, []);
 
   // Fonction pour connecter l'Utilisateur pas encore authentifié
   const connecterUtilisateur = async (identifiant, mdp) => {
