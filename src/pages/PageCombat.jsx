@@ -60,7 +60,7 @@ const PageCombat = () => {
     socket.on('restartedBattle', () => {
       recupererCombat(combatID);
       const log = 'Le combat a été reinitialisé par le MJ !';
-      setLogs((prevState) => [...prevState, log]);
+      setLogs([log]);
     });
 
     socket.on('nextTurn', (reponsePrenom) => {
