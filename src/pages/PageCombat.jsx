@@ -76,13 +76,13 @@ const PageCombat = () => {
       setLogs((prevState) => [...prevState, log1, log2]);
     });
 
-    socket.on('degatsAttaque', (reponseAttaquantPrenom, reponseDegats, reponseReceveurPrenom) => {
+    socket.on('damageRolled', (reponseAttaquantPrenom, reponseDegats, reponseReceveurPrenom) => {
       recupererCombat(combatID);
       const log = `${reponseAttaquantPrenom} inflige une attaque à ${reponseReceveurPrenom} qui fait ${reponseDegats} dégats !`;
       setLogs((prevState) => [...prevState, log]);
     });
 
-    socket.on('changementPosture', (reponsePrenom, reponsePosture) => {
+    socket.on('stanceChanged', (reponsePrenom, reponsePosture) => {
       recupererCombat(combatID);
       const log = `Le personnage ${reponsePrenom} prend la posture ${reponsePosture} !`;
       setLogs((prevState) => [...prevState, log]);
@@ -97,8 +97,8 @@ const PageCombat = () => {
       socket.off('restartedBattle');
       socket.off('nextTurn');
       socket.off('newRound');
-      socket.off('degatsAttaque');
-      socket.off('changementPosture');
+      socket.off('damageRolled');
+      socket.off('stanceChanged');
     };
   }, []);
 
