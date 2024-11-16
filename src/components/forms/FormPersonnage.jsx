@@ -11,8 +11,6 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
   const [utilisateurID, setUtilisateurID] = useState(personnageInitial.UtilisateurId || '');
   const [utilisateurs, setUtilisateurs] = useState([]);
 
-  useEffect( () => { recupererUtilisateurs(); } , []);
-
   const recupererUtilisateurs = async () => {
     try {
       const { data } = await axios.get(URLS.USER_ALL);
@@ -20,6 +18,8 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
     } catch ( { response } ) {
       alert(response.data.error); }
   };
+
+  useEffect( () => { recupererUtilisateurs(); } , []);
 
   const soumettreFormulaire = (event) => {
     event.preventDefault();
