@@ -13,6 +13,9 @@ const PageCombat = () => {
   const [ combat, setCombat ] = useState(null);
   const [ logs, setLogs ] = useState([]);
   const [ isDeleted, setIsDeleted ] = useState(false);
+  const [ posture, setPosture ] = useState('attaque');
+  const [ cibleAttaque1, setCibleAttaque1 ] = useState('');
+  const [ cibleAttaque2, setCibleAttaque2 ] = useState('');
   const [ isPrendreControle, setIsPrendreControle ] = useState(false);
 
   const recupererCombat = async (ID) => {
@@ -118,10 +121,41 @@ const PageCombat = () => {
     event.preventDefault();
     setIsPrendreControle(false);
 
-    try {
-      await axios.put(URLS.BATTLE_PLAYTURN + '/' + combatID, { posture: donneesTourJeu }, { withCredentials: true } );
+    if (!posture || posture == '') {
+      alert('Veuillez choisir une posture valide !');
+      return;
     }
+
+    if (posture === 'centre' || posture === 'esquive') {
+      setCibleAttaque1('');
+      setCibleAttaque2('');
+    }
+
+    if (posture === 'defense') {
+      setCibleAttaque2('');
+      if (!cibleAttaque1 || cibleAttaque1 == '') {
+        alert('Veuillez choisir au moins une cible avec la posture défense !');
+        return;
+      }
+    }
+
+    if (posture === 'attaque' || posture === 'assaut') {
+      if ( ( !cibleAttaque1 || cibleAttaque1 == '' ) || ( !cibleAttaque2 || cibleAttaque2 == '' ) ) {
+        alert('Vous devez déclarer deux attaques valides !');
+        return;
+      }
+    }
+        
+    try {
+      await axios.put(
+        URLS.BATTLE_PLAYTURN + '/' + combatID,
+        { posture: posture, cibleAttaque1: cibleAttaque1, cibleAttaque2: cibleAttaque2 },
+        { withCredentials: true } );
+      }
     catch ({response}) { alert(response.data.error); }
+    setPosture('');
+    setCibleAttaque1('');
+    setCibleAttaque2('');
   }
 
   return (
@@ -146,17 +180,38 @@ const PageCombat = () => {
             {utilisateur && combat &&
               <>
                 {utilisateur.id === combat.TourCourant?.Personnage.utilisateur_id || isPrendreControle === true ?
-              <form>
-                <select value={donneesTourJeu} onChange={ (event) => { setDonneesTourJeu(event.target.value); console.log('onChange :', donneesTourJeu) } }>
-                  <option value="esquive">ESQUIVE</option>
-                  <option value="defense">DEFENSE</option>
-                  <option value="centre">CENTRE</option>
-                  <option value="attaque">ATTAQUE</option>
-                  <option value="assaut">ASSAUT</option>
-                </select>
-                <button className="btn-start" onClick={jouerTour}>Jouer son Tour</button>
-              </form>
-:
+                  <form>
+                    Posture :
+                    <select value={posture} onChange={(event) => setPosture(event.target.value)}>
+                      <option value=''>Veuillez choisir une posture pour ce tour de jeu</option>
+                      <option value="esquive">ESQUIVE : pas d'actions, ND Armure +15</option>
+                      <option value="defense">DEFENSE : une action, ND Armure +5</option>
+                      <option value="attaque">ATTAQUE : deux actions</option>
+                      <option value="assaut">ASSAUT : deux actions, Jet Toucher +10, ND Armure -10</option>
+                    </select>
+                    {posture != 'esquive' && posture != 'centre' &&
+                      <div>
+                        Cible 1ère ATTAQUE :
+                        <select value={cibleAttaque1} onChange={(event) => setCibleAttaque1(event.target.value)}>
+                          <option value=''>Choisir un personnage cible pour une première attaque</option>
+                          {combat?.Participations.filter((item) => item.team != combat?.TourCourant?.team).map((item, index) =>
+                            <option value={item.Personnage.id} key={index}>{item.Personnage.prenom}</option>)}
+                        </select>
+                      </div>
+                    }
+                    {(posture == 'attaque' || posture == 'assaut') &&
+                      <div>
+                        Cible 2ème ATTAQUE :
+                        <select value={cibleAttaque2} onChange={(event) => setCibleAttaque2(event.target.value)}>
+                          <option value=''>Choisir un personnage cible pour une seconde attaque</option>
+                          {combat?.Participations.filter((item) => item.team != combat?.TourCourant?.team).map((item, index) =>
+                            <option value={item.Personnage.id} key={index}>{item.Personnage.prenom}</option>)}
+                        </select>
+                      </div>
+                    }
+                    <button className="btn-start" onClick={jouerTour}>Jouer son Tour</button>
+                  </form>
+                  :
                   <span>Ce n'est pas à votre tour de jouer !</span>
                 }
               </>
