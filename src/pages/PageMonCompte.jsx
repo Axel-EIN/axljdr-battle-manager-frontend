@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ContexteUtilisateur } from "../contexts/contexteUtilisateur";
+import { URLS } from "../constants/urls";
 
 const PageMonCompte = () => {
     const { utilisateur } = useContext(ContexteUtilisateur);
@@ -20,7 +21,7 @@ const PageMonCompte = () => {
             <br/><br/>
             Votre Avatar : <strong>{utilisateur.avatar}</strong>
             <br/>
-            {utilisateur.avatar? <img src={'http://localhost:8080/' + utilisateur.avatar} alt="Avatar de l'Utilisateur" /> : <img src={'https://i.pravatar.cc/96'} />}
+            {utilisateur.avatar? <img src={`${URLS.BASE_URL}/${utilisateur.avatar}`} alt="Avatar de l'Utilisateur" /> : <img src={'https://i.pravatar.cc/96'} />}
         </>
     );
 };
