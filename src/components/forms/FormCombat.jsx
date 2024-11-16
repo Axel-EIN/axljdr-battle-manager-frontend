@@ -5,12 +5,13 @@ import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
 
 const FormCombat = ({ fonctionPropsSoumissionFormulaire, combatInitial = false }) => {
+
   if (combatInitial.Participations) {
-    combatInitial.teamA = combatInitial.Participations.filter((element) => element.team == 1).map((element) => ({ value: `${element.PersonnageId}` }));
+    combatInitial.teamA = combatInitial.Participations.filter((element) => element.team == 1).map((element) => ({ value: `${element.personnage_id}` }));
   }
 
   if (combatInitial.Participations) {
-    combatInitial.teamB = combatInitial.Participations.filter((element) => element.team == 2).map((element) => ({ value: `${element.PersonnageId}` }));
+    combatInitial.teamB = combatInitial.Participations.filter((element) => element.team == 2).map((element) => ({ value: `${element.personnage_id}` }));
   }
 
   const [titre, setTitre] = useState(combatInitial.titre || '');
