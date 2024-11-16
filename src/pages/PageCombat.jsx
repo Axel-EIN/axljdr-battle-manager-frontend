@@ -104,7 +104,7 @@ const PageCombat = () => {
       {!isDeleted &&
         <>
           <h2 className="battle-status">Statut : {combat?.statut}</h2>
-          <h2 className="battle-status">Round Actuel : {combat?.roundCourant}</h2>
+          <h2 className="battle-status">Round Actuel : {combat?.round_courant}</h2>
           <h2 className="battle-status">Tour Actuel : {combat?.TourCourant?.Personnage?.prenom}</h2>
           <div className="fight">
             <div className="team">
@@ -135,7 +135,7 @@ const PageCombat = () => {
                 {combat?.statut === 'waiting' && <button className="btn-start" onClick={demarrerCombat}>Démarrer</button>}
                 {combat?.statut === 'paused' && <button className="btn-start" onClick={demarrerCombat}>Reprendre</button>}
                 {combat?.statut === 'started' && <button className="btn-stop" onClick={arreterCombat}>Mettre en Pause</button>}
-                {combat?.roundCourant != 0 && <button className="btn-restart" onClick={recommencerCombat}>Recommencer</button>}
+                {combat?.round_courant != 0 && <button className="btn-restart" onClick={recommencerCombat}>Recommencer</button>}
               </>
             )}
           </div>
