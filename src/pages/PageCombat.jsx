@@ -26,37 +26,37 @@ const PageCombat = () => {
 
     socket.on('editedBattle', () => {
       recupererCombat(combatID);
-      const log = 'Le combat a été modifié par le MJ';
+      const log = 'Le combat a été modifié par le MJ !';
       setLogs((prevState) => [...prevState, log]);
     });
 
     socket.on('deletedBattle', () => {
       setIsDeleted(true);
-      const log = 'Le combat a été supprimé par le MJ';
+      const log = 'Le combat a été supprimé par le MJ !';
       setLogs((prevState) => [...prevState, log]);
     });
 
     socket.on('initiativeRolled', (reponsePrenom) => {
       recupererCombat(combatID);
-      const log = `Le combat a été démarré par le MJ avec un jet d'initiative, le premier joueur est ${reponsePrenom}`;
+      const log = `Combat démarré par le MJ. Jets d'initiatives réalisés. Le premier joueur est ${reponsePrenom} !`;
       setLogs((prevState) => [...prevState, log]);
     });
 
     socket.on('resumedBattle', () => {
       recupererCombat(combatID);
-      const log = 'Le combat a été repris par le MJ';
+      const log = 'Le combat a été repris par le MJ !';
       setLogs((prevState) => [...prevState, log]);
     });
 
     socket.on('pausedBattle', () => {
       recupererCombat(combatID);
-      const log = 'Le combat a été mis en pause par le MJ';
+      const log = 'Le combat a été mis en pause par le MJ !';
       setLogs((prevState) => [...prevState, log]);
     });
 
     socket.on('restartedBattle', () => {
       recupererCombat(combatID);
-      const log = 'Le combat a été reinitialisé par le MJ';
+      const log = 'Le combat a été reinitialisé par le MJ !';
       setLogs((prevState) => [...prevState, log]);
     });
 
