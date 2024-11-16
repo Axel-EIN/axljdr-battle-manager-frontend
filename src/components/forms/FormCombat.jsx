@@ -19,11 +19,6 @@ const FormCombat = ({ fonctionPropsSoumissionFormulaire, combatInitial = false }
   const [champsFormulaireTeamB, setChampsFormulaireTeamB] = useState( [ { value: "" } ] ); // Création d'un tableau avec une case initialisé à value = ""
   const [personnages, setPersonnages] = useState( [] );
 
-  useEffect( () => {
-    recupererPersonnages();
-    initialiserTeams();
-  } , [] );
-
   const recupererPersonnages = async () => {
     try {
       const { data } = await axios.get(URLS.CHAR_ALL);
@@ -38,6 +33,11 @@ const FormCombat = ({ fonctionPropsSoumissionFormulaire, combatInitial = false }
     if (combatInitial.teamB)
       setChampsFormulaireTeamB(combatInitial.teamB);
   }
+
+  useEffect( () => {
+    recupererPersonnages();
+    initialiserTeams();
+  } , [] );
 
   const mettreAjourLeChamp = (team, index, event) => { // Fonction pour mettre à jour le champ
     if (team === 'A') {
