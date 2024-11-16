@@ -9,7 +9,7 @@ function BattlePortrait( { participation } ) {
         <span>HP <strong>{participation.Personnage.HP}</strong></span>
         <span>Initiative <strong>{participation.initiative}</strong></span>
         <span>Posture <strong>{participation.posture}</strong></span>
-        <span>A joué <strong>{participation.isPlayed? <span>Oui</span> : <span>Non</span>}</strong></span>
+        <span>A joué <strong>{participation.is_played? <span>Oui</span> : <span>Non</span>}</strong></span>
       </div>
     </div>
   );
