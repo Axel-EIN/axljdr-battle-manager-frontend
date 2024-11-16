@@ -22,6 +22,17 @@ const PageMonCompte = () => {
             Votre Avatar : <strong>{utilisateur.avatar}</strong>
             <br/>
             {utilisateur.avatar? <img src={`${URLS.BASE_URL}/${utilisateur.avatar}`} alt="Avatar de l'Utilisateur" /> : <img src={'https://i.pravatar.cc/96'} />}
+            <br/>
+            {utilisateur && utilisateur.Personnages &&
+                <>
+                    <h2>Mes Personnages :</h2>
+                    {utilisateur.Personnages.map((element) =>
+                        <div key={element.id}>
+                            <img src={`${URLS.BASE_URL}/${element.portrait}`} alt="Portrait du Personnage" />
+                            <strong>{element.nom} {element.prenom}</strong>
+                        </div>)}
+                </>
+            }
         </>
     );
 };
