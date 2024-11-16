@@ -60,9 +60,28 @@ const PageCombat = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
-    socket.on('nextTurn', () => {
+    socket.on('nextTurn', (reponsePrenom) => {
       recupererCombat(combatID);
-      const log = "C'est au tour d'un nouveau personnage de jouer";
+      const log = `C'est au tour de ${reponsePrenom} de jouer !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('newRound', (reponseNumeroRound) => {
+      recupererCombat(combatID);
+      const log1 = 'Le Round vient de se terminer !';
+      const log2 = `Le Round ${reponseNumeroRound} démarre !`;
+      setLogs((prevState) => [...prevState, log1, log2]);
+    });
+
+    socket.on('degatsAttaque', (reponseAttaquantPrenom, reponseDegats, reponseReceveurPrenom) => {
+      recupererCombat(combatID);
+      const log = `${reponseAttaquantPrenom} inflige une attaque à ${reponseReceveurPrenom} qui fait ${reponseDegats} dégats !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('changementPosture', (reponsePrenom, reponsePosture) => {
+      recupererCombat(combatID);
+      const log = `Le personnage ${reponsePrenom} prend la posture ${reponsePosture} !`;
       setLogs((prevState) => [...prevState, log]);
     });
 
@@ -74,6 +93,9 @@ const PageCombat = () => {
       socket.off('resumedBattle');
       socket.off('restartedBattle');
       socket.off('nextTurn');
+      socket.off('newRound');
+      socket.off('degatsAttaque');
+      socket.off('changementPosture');
     };
   }, []);
 
