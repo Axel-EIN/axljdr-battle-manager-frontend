@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { URLS } from '../../constants/urls.js';
 
 const FormUtilisateur = ( { fonctionPropsSoumissionFormulaire, utilisateurInitial = false, register = false } ) => {
 
@@ -46,7 +47,7 @@ const FormUtilisateur = ( { fonctionPropsSoumissionFormulaire, utilisateurInitia
 
       {!register &&
         <>
-          {utilisateurInitial && utilisateurInitial.avatar && !avatar && <img src={`http://localhost:8080/${utilisateurInitial.avatar}`} />}
+          {utilisateurInitial && utilisateurInitial.avatar && !avatar && <img src={`${URLS.BASE_URL}/${utilisateurInitial.avatar}`} />}
           <label htmlFor="avatar">Avatar</label>
           <input type="file" name="avatar" onChange={ (event) => setAvatar(event.target.files[0]) } />
 
