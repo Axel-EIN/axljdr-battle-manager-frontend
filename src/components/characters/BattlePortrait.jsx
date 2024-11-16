@@ -4,7 +4,7 @@ function BattlePortrait( { participation } ) {
   return (
     <div className="character" key={participation.Personnage.id}>
       <div className="portrait-wrapper">
-        <img className="portrait-medium" src={participation.Personnage.portrait? `${URLS.BASE}/${participation.Personnage.portrait}` : 'https://i.pravatar.cc/96'}  alt={participation.Personnage.prenom} />
+        <img className="portrait-medium" src={participation.Personnage.portrait? `${URLS.BASE_URL}/${participation.Personnage.portrait}` : 'https://i.pravatar.cc/96'}  alt={participation.Personnage.prenom} />
         <strong>{participation.Personnage.prenom}</strong>
       </div>
       <div className="stats">
