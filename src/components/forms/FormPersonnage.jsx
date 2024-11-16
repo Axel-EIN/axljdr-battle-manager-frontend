@@ -8,7 +8,7 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
   const [prenom, setPrenom] = useState(personnageInitial.prenom || '');
   const [portrait, setPortrait] = useState(null);
   const [illustration, setIllustration] = useState(null);
-  const [utilisateurID, setUtilisateurID] = useState(personnageInitial.UtilisateurId || '');
+  const [utilisateurID, setUtilisateurID] = useState(personnageInitial.utilisateur_id || '');
   const [utilisateurs, setUtilisateurs] = useState([]);
 
   const recupererUtilisateurs = async () => {
