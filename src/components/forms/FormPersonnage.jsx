@@ -10,7 +10,7 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
   const [illustration, setIllustration] = useState(null);
   const [utilisateurID, setUtilisateurID] = useState(personnageInitial.utilisateur_id || '');
   const [utilisateurs, setUtilisateurs] = useState([]);
-
+  
   const recupererUtilisateurs = async () => {
     try {
       const { data } = await axios.get(URLS.USER_ALL);
@@ -29,7 +29,7 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
     donneesFormulaire.append('prenom', prenom);
     if (portrait && portrait != '') donneesFormulaire.append('portrait', portrait);
     if (illustration && illustration != '') donneesFormulaire.append('illustration', illustration);
-    if (utilisateurID && utilisateurID != '') donneesFormulaire.append('UtilisateurId', utilisateurID);
+    if (utilisateurID && utilisateurID != '') donneesFormulaire.append('utilisateur_id', utilisateurID);
     
     if ( !donneesFormulaire.get('nom') || !donneesFormulaire.get('prenom') ) {
       alert("Il manque des données de formulaire à remplir pour créer le personnage !");
@@ -56,8 +56,8 @@ const FormPersonnage = ({ fonctionPropsSoumissionFormulaire, personnageInitial =
       <label htmlFor="illustration">Illustration :</label>
       <input type="file" name="illustration" onChange={ (event) => setIllustration(event.target.files[0]) } />
 
-      <label htmlFor="UtilisateurId">Joueur :</label>
-      <select name="UtilisateurId" id="UtilisateurId" value={utilisateurID} onChange={ (event) => setUtilisateurID(event.target.value) } >
+      <label htmlFor="utilisateur_id">Joueur :</label>
+      <select name="utilisateur_id" id="utilisateur_id" value={utilisateurID} onChange={ (event) => setUtilisateurID(event.target.value) } >
         <option>Aucun / PNJ (Maître du Jeu)</option>
         {utilisateurs.map( (utilisateur, cle) => <option key={cle} value={utilisateur.id}>{utilisateur.prenom}</option> )}
       </select>
