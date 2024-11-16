@@ -13,7 +13,7 @@ const PageCombat = () => {
   const [ combat, setCombat ] = useState(null);
   const [ logs, setLogs ] = useState([]);
   const [ isDeleted, setIsDeleted ] = useState(false);
-  const [ donneesTourJeu, setDonneesTourJeu ] = useState('attaque');
+  const [ isPrendreControle, setIsPrendreControle ] = useState(false);
 
   const recupererCombat = async (ID) => {
     const { data } = await axios.get(URLS.BATTLE_ONE + '/' + ID);
@@ -116,6 +116,8 @@ const PageCombat = () => {
 
   const jouerTour = async (event) => {
     event.preventDefault();
+    setIsPrendreControle(false);
+
     try {
       await axios.put(URLS.BATTLE_PLAYTURN + '/' + combatID, { posture: donneesTourJeu }, { withCredentials: true } );
     }
@@ -141,7 +143,9 @@ const PageCombat = () => {
             </div>
           </div>
           <div className="turn-actions">
-            {utilisateur && utilisateur.id === combat?.TourCourant?.Personnage.UtilisateurId &&
+            {utilisateur && combat &&
+              <>
+                {utilisateur.id === combat.TourCourant?.Personnage.utilisateur_id || isPrendreControle === true ?
               <form>
                 <select value={donneesTourJeu} onChange={ (event) => { setDonneesTourJeu(event.target.value); console.log('onChange :', donneesTourJeu) } }>
                   <option value="esquive">ESQUIVE</option>
@@ -152,6 +156,18 @@ const PageCombat = () => {
                 </select>
                 <button className="btn-start" onClick={jouerTour}>Jouer son Tour</button>
               </form>
+:
+                  <span>Ce n'est pas à votre tour de jouer !</span>
+                }
+              </>
+            }
+            {combat && combat.statut === 'started' && utilisateur && utilisateur.role === 'mj' && utilisateur.id != combat.TourCourant?.Personnage.utilisateur_id &&
+              <>
+                {isPrendreControle === false ?
+                  <button onClick={() => setIsPrendreControle(true)}>Prendre le contrôle</button>
+                  :
+                  <button onClick={() => setIsPrendreControle(false)}>Redonner la main</button>}
+              </>
             }
           </div>
           <div className="actions">
