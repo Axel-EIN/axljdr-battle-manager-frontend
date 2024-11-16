@@ -13,7 +13,7 @@ function PageAccueil() {
   };
 
   useEffect(() => {
-    const socket = io("http://localhost:8080"); // Initialisation de la connexion WebSocket avec le Back-End
+    const socket = io(URLS.BASE_URL); // Initialisation connexion WebSocket avec Back-End
     recupererCombats();
 
     socket.on('newBattle', () => { recupererCombats(); });
