@@ -77,8 +77,8 @@ const PageMj = () => {
                                 <td>{personnage.id}</td>
                                 <td>{personnage.nom}</td>
                                 <td>{personnage.prenom}</td>
-                                <td>{personnage.portrait? <img src={`http://localhost:8080/${personnage.portrait}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
-                                <td>{personnage.illustration? <img src={`http://localhost:8080/${personnage.illustration}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
+                                <td>{personnage.portrait? <img src={`${URLS.BASE_URL}/${personnage.portrait}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
+                                <td>{personnage.illustration? <img src={`${URLS.BASE_URL}/${personnage.illustration}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
                                 <td>{personnage.Utilisateur?.prenom}</td>
                                 <td><Link to={'/mj/personnage/modifier' + '/' + personnage.id}><EditIcon /></Link></td>
                                 <td><DeleteIcon onClick={() => supprimerPersonnage(personnage.id)} /></td>
