@@ -1,8 +1,10 @@
+import { URLS } from '../../constants/urls.js'
+
 function BattlePortrait( { participation } ) {
   return (
     <div className="character" key={participation.Personnage.id}>
       <div className="portrait-wrapper">
-        {participation.Personnage.portrait? <img className="portrait-medium" src={`http://localhost:8080/${participation.Personnage.portrait}`}  alt={participation.Personnage.prenom} /> : <img src={'https://i.pravatar.cc/96'} alt={participation.Personnage.prenom} /> }
+        <img className="portrait-medium" src={participation.Personnage.portrait? `${URLS.BASE}/${participation.Personnage.portrait}` : 'https://i.pravatar.cc/96'}  alt={participation.Personnage.prenom} />
         <strong>{participation.Personnage.prenom}</strong>
       </div>
       <div className="stats">
