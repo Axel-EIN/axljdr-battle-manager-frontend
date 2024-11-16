@@ -9,14 +9,14 @@ const PagePersonnageModifier = () => {
   const { personnageID } = useParams();
   const navigate = useNavigate();
 
-  useEffect( () => { recupererUnPersonnage(personnageID); }, []);
-
-  const recupererUnPersonnage = async (ID) => {
+  const recupererUnPersonnage = async (personnageID) => {
     try {
-      const { data } = await axios.get(URLS.CHAR_ONE + '/' + ID);
+      const { data } = await axios.get(URLS.CHAR_ONE + '/' + personnageID);
       setPersonnageAmodifier(data);
     } catch ( erreur ) { console.error( erreur.message ); alert(erreur.message) };
   }
+
+  useEffect( () => { recupererUnPersonnage(personnageID); }, []);
 
   const modifierPersonnageDepuisFormulaire = async (donneesFormulaire) => {
     try {
