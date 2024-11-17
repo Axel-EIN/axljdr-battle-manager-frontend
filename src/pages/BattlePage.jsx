@@ -1,4 +1,4 @@
-import "./Combat.css";
+import "./Battle.css";
 import { useEffect, useState, useContext } from "react";
 import { ContexteUser } from "../contexts/contexteUser";
 import { useParams } from "react-router-dom";
@@ -70,20 +70,31 @@ const BattlePage = () => {
 
     socket.on('newRound', (responseRoundNumber) => {
       retrieveOneBattle(combatID);
-      const log1 = 'Le Round vient de se terminer !';
-      const log2 = `Le Round ${responseRoundNumber} démarre !`;
-      setLogs((prevState) => [...prevState, log1, log2]);
-    });
-
-    socket.on('damageRolled', (responseAttackerFirstname, responseDamage, responseDefenserFirstname) => {
-      retrieveOneBattle(combatID);
-      const log = `${responseAttackerFirstname} inflige une attaque à ${responseDefenserFirstname} qui fait ${responseDamage} dégats !`;
+      const log = `Le Round vient de se terminer ! Le Round ${responseRoundNumber} démarre !`;
       setLogs((prevState) => [...prevState, log]);
     });
 
-    socket.on('stanceChanged', (responseFirstname, responseStance) => {
+    socket.on('stanceChanged', (charFirstname, stance) => {
       retrieveOneBattle(combatID);
-      const log = `Le personnage ${responseFirstname} prend la posture ${responseStance} !`;
+      const log = `Le personnage ${charFirstname} prend la posture ${stance} !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('atkRoll', (atkRoll, targetTn) => {
+      retrieveOneBattle(combatID);
+      const log = `Le jet de dès d'attaque donne ${atkRoll} contre un TN d'esquive de ${targetTn} !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('damageRolled', (atkFirstname, damage, defFirstname) => {
+      retrieveOneBattle(combatID);
+      const log = `${atkFirstname} inflige une attaque à ${defFirstname} qui fait ${damage} dégats !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
+    socket.on('dodgedAttack', (atkFirstname, defFirstname) => {
+      retrieveOneBattle(combatID);
+      const log = `${defFirstname} a esquiver l'attaque de ${atkFirstname} !`;
       setLogs((prevState) => [...prevState, log]);
     });
 
@@ -96,8 +107,10 @@ const BattlePage = () => {
       socket.off('restartedBattle');
       socket.off('nextTurn');
       socket.off('newRound');
-      socket.off('damageRolled');
       socket.off('stanceChanged');
+      socket.off('atkRoll');
+      socket.off('damageRolled');
+      socket.off('dodgedAttack');
     };
   }, []);
 
@@ -181,11 +194,13 @@ const BattlePage = () => {
           <h2 className="battle-status">Tour Actuel : {battle?.CurrentTurn?.firstname}</h2>
           <div className="fight">
             <div className="team">
-              {battle?.Participations && battle?.Participations.filter((participation) => participation.team === 1).map((participation) => <BattlePortrait participation={participation} key={participation.Character.id} />)}
+              {battle?.Participations && battle?.Participations.filter((participation) => participation.team === 1).map((participation) =>
+                <BattlePortrait participation={participation} key={participation.Character.id} />)}
             </div>
             <h1>VS</h1>
             <div className="team">
-              {battle?.Participations && battle?.Participations.filter((participation) => participation.team === 2).map((participation) => <BattlePortrait participation={participation} key={participation.Character.id} />)}
+              {battle?.Participations && battle?.Participations.filter((participation) => participation.team === 2).map((participation) =>
+                <BattlePortrait participation={participation} key={participation.Character.id} />)}
             </div>
           </div>
           <div className="turn-actions">
