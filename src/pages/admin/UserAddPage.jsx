@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { URLS } from "../../constants/urls.js";
-import FormUtilisateur from "../../components/forms/FormUtilisateur.jsx";
+import FormUser from "../../components/forms/FormUser.jsx";
 
-const PageUtilisateurCreer = () => {
+const UserAddPage = () => {
   const navigate = useNavigate();
 
-  const creerUtilisateurDepuisFormulaire = async (donneesFormulaire) => {
+  const submitPropsAddUser = async (formData) => {
     try {
-      await axios.post( URLS.USER_CREATE, donneesFormulaire, {
+      await axios.post( URLS.USER_CREATE, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true
       });
@@ -21,10 +21,10 @@ const PageUtilisateurCreer = () => {
 
   return (
     <>
-      <h1>CRÉATION UTILISATEUR</h1>
-      <FormUtilisateur fonctionPropsSoumissionFormulaire={creerUtilisateurDepuisFormulaire} />
+      <h1>Ajouter un utilisateur</h1>
+      <FormUser submitPropsFunction={submitPropsAddUser} />
     </>
   );
 };
 
-export default PageUtilisateurCreer;
+export default UserAddPage;
