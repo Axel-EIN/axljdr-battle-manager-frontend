@@ -1,58 +1,57 @@
 import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Template from "./components/templates/Template.jsx";
-import TemplateConnecte from "./components/templates/TemplateConnecte.jsx";
-import TemplatePasConnecte from "./components/templates/TemplatePasConnecte.jsx";
-import TemplateMJ from "./components/templates/TemplateMJ.jsx";
+import TemplateLogged from "./components/templates/TemplateLogged.jsx";
+import TemplateNotLogged from "./components/templates/TemplateNotLogged.jsx";
+import TemplateGamemaster from "./components/templates/TemplateGamemaster.jsx";
 import TemplateAdmin from "./components/templates/TemplateAdmin.jsx";
-import PageAccueil from "./pages/PageAccueil.jsx";
-import PageConnexion from "./pages/PageConnexion.jsx";
-import PageInscription from "./pages/PageInscription.jsx";
-import PageMonCompte from "./pages/PageMonCompte.jsx";
-import PageAdmin from "./pages/admin/PageAdmin.jsx";
-import PageUtilisateurCreer from "./pages/admin/PageUtilisateurCreer.jsx";
-import PageUtilisateurModifier from "./pages/admin/PageUtilisateurModifier.jsx";
-import PagePersonnageCreer from "./pages/mj/PagePersonnageCreer.jsx";
-import PagePersonnageModifier from "./pages/mj/PagePersonnageModifier.jsx";
-import PageCombatCreer from "./pages/mj/PageCombatCreer.jsx";
-import PageCombatModifier from "./pages/mj/PageCombatModifier.jsx";
-import PageCombat from "./pages/PageCombat.jsx";
-import PageMj from "./pages/mj/PageMj.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx";
+import AdminPage from "./pages/admin/AdminPage.jsx";
+import UserAddPage from "./pages/admin/UserAddPage.jsx";
+import UserEditPage from "./pages/admin/UserEditPage.jsx";
+import GameMasterPage from "./pages/gamemaster/GameMasterPage.jsx";
+import CharacterAddPage from "./pages/gamemaster/CharacterAddPage.jsx";
+import CharacterEditPage from "./pages/gamemaster/CharacterEditPage.jsx";
+import BattleAddPage from "./pages/gamemaster/BattleAddPage.jsx";
+import BattleEditPage from "./pages/gamemaster/BattleEditPage.jsx";
+import BattlePage from "./pages/BattlePage.jsx";
 
 function App() {
-  // Définition des Routes
-  return (
+  return ( // Définition des Routes
     <>
       <Routes>
 
         <Route path="/">
 
           <Route path="/" element={<Template />} >
-            <Route index element={<PageAccueil />} />
-            <Route path="/combat/:combatID" element={<PageCombat />} />
+            <Route index element={<HomePage />} />
+            <Route path="/combat/:combatID" element={<BattlePage />} />
           </Route>
 
-          <Route element={<TemplatePasConnecte />} >
-            <Route path="/connexion" element={<PageConnexion />} />
-            <Route path="/inscription" element={<PageInscription />} />       
+          <Route element={<TemplateNotLogged />} >
+            <Route path="/connexion" element={<LoginPage />} />
+            <Route path="/inscription" element={<RegisterPage />} />       
           </Route>
 
-          <Route element={<TemplateConnecte />} >
-            <Route path="/mon-compte" element={<PageMonCompte />} />
+          <Route element={<TemplateLogged />} >
+            <Route path="/mon-compte" element={<AccountPage />} />
           </Route>
 
-          <Route element={<TemplateMJ />} >
-            <Route path="/mj" element={<PageMj />} />
-            <Route path="/mj/personnage/creer" element={<PagePersonnageCreer />} />
-            <Route path="/mj/personnage/modifier/:personnageID" element={<PagePersonnageModifier />} />
-            <Route path="/mj/combat/creer" element={<PageCombatCreer />} />
-            <Route path="/mj/combat/modifier/:combatID" element={<PageCombatModifier />} />
+          <Route element={<TemplateGamemaster />} >
+            <Route path="/mj" element={<GameMasterPage />} />
+            <Route path="/mj/personnage/creer" element={<CharacterAddPage />} />
+            <Route path="/mj/personnage/modifier/:personnageID" element={<CharacterEditPage />} />
+            <Route path="/mj/combat/creer" element={<BattleAddPage />} />
+            <Route path="/mj/combat/modifier/:combatID" element={<BattleEditPage />} />
           </Route>
 
           <Route element={<TemplateAdmin />} >
-            <Route path="/admin" element={<PageAdmin />} />
-            <Route path="/admin/utilisateur/creer" element={<PageUtilisateurCreer />} />
-            <Route path="/admin/utilisateur/modifier/:utilisateurID" element={<PageUtilisateurModifier />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/utilisateur/creer" element={<UserAddPage />} />
+            <Route path="/admin/utilisateur/modifier/:utilisateurID" element={<UserEditPage />} />
           </Route>
 
         </Route>
