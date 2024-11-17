@@ -6,25 +6,25 @@ import { useNavigate } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const PageAdmin = () => {
-    const [utilisateurs, setUtilisateurs] = useState([]);
+const AdminPage = () => {
+    const [users, setUsers] = useState([]);
     const [reload, setReload] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        recupererUtilisateurs();
+        const getUsers = async () => {
+            const { data } = await axios.get(URLS.USER_ALL);
+            setUsers(data);
+        }
+        getUsers();
         setReload(false);
     }, [reload])
 
-    const recupererUtilisateurs = async () => {
-        const { data } = await axios.get(URLS.USER_ALL);
-        setUtilisateurs(data);
-    }
 
-    const supprimerUtilisateur = async (utilisateurID) => {
+    const deleteUser = async (userID) => {
         try {
             const instance = axios.create({withCredentials: true})
-            const reponse = await instance.delete(URLS.USER_DELETE + '/' + utilisateurID);
+            await instance.delete(URLS.USER_DELETE + '/' + userID);
             alert("L'Utilisateur a bien été supprimé !");
             setReload(true);
         } catch ({response}) {
@@ -52,22 +52,18 @@ const PageAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {
-                    utilisateurs.map(
-                        (utilisateur, cle) => (
-                            <tr key={cle}>
-                                <td>{utilisateur.id}</td>
-                                <td>{utilisateur.identifiant}</td>
-                                <td>{utilisateur.email}</td>
-                                <td>{utilisateur.prenom}</td>
-                                <td>{utilisateur.avatar? <img src={`${URLS.BASE_URL}/${utilisateur.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
-                                <td>{utilisateur.role}</td>
-                                <td><Link to={'/admin/utilisateur/modifier' + '/' + utilisateur.id}><EditIcon /></Link></td>
-                                <td><DeleteIcon onClick={() => supprimerUtilisateur(utilisateur.id)} /></td>
-                            </tr>
-                        )
-                    )
-                }
+                {users.map((user) =>
+                    <tr key={user.id}>
+                        <td>{user.id}</td>
+                        <td>{user.login}</td>
+                        <td>{user.email}</td>
+                        <td>{user.firstname}</td>
+                        <td>{user.avatar? <img src={`${URLS.BASE_URL}/${user.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
+                        <td>{user.role}</td>
+                        <td><Link to={'/admin/utilisateur/modifier' + '/' + user.id}><EditIcon /></Link></td>
+                        <td><Link><DeleteIcon onClick={() => deleteUser(user.id)} /></Link></td>
+                    </tr>
+                )}
                 </tbody>
                 <tfoot></tfoot>
             </table>
@@ -75,4 +71,4 @@ const PageAdmin = () => {
     );
 };
 
-export default PageAdmin;
+export default AdminPage;
