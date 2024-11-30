@@ -32,4 +32,5 @@ export const URLS = {
     BATTLE_STOP: `${BASE_URL}/api/battle/stop`,
     BATTLE_RESTART: `${BASE_URL}/api/battle/restart`,
     BATTLE_PLAYTURN: `${BASE_URL}/api/battle/turn`,
+    BATTLE_RESTORE: `${BASE_URL}/api/battle/restore`,
 }
