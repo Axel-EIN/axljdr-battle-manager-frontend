@@ -62,6 +62,12 @@ const BattlePage = () => {
       setLogs([log]);
     });
 
+    socket.on('restoredCharacters', () => {
+      retrieveOneBattle(combatID);
+      const log = 'Les personnages du combat ont été restaurés par le MJ !';
+      setLogs([log]);
+    });
+
     socket.on('nextTurn', (responseFirstname) => {
       retrieveOneBattle(combatID);
       const log = `C'est au tour de ${responseFirstname} de jouer !`;
@@ -111,6 +117,7 @@ const BattlePage = () => {
       socket.off('atkRoll');
       socket.off('damageRolled');
       socket.off('dodgedAttack');
+      socket.off('restoredCharacters');
     };
   }, []);
 
@@ -126,6 +133,11 @@ const BattlePage = () => {
 
   const restartBattle = async () => {
     try { await axios.put(URLS.BATTLE_RESTART + '/' + combatID, {}, { withCredentials: true }); }
+    catch ({response}) { alert(response.data.error); }
+  }
+
+  const restoreBattle = async () => {
+    try { await axios.put(URLS.BATTLE_RESTORE + '/' + combatID, {}, { withCredentials: true }); }
     catch ({response}) { alert(response.data.error); }
   }
 
@@ -252,7 +264,12 @@ const BattlePage = () => {
           <div className="actions">
             {user && user.role == 'gamemaster' && battle?.Participations.length > 0 && (
               <>
-                {battle?.status === 'waiting' && <button className="btn-start" onClick={startBattle}>Démarrer</button>}
+                {battle?.status === 'waiting' &&
+                  <>
+                    <button className="btn-start" onClick={startBattle}>Démarrer</button>
+                    <button onClick={restoreBattle}>Restaurer les personnages</button>
+                  </>
+                }
                 {battle?.status === 'paused' && <button className="btn-start" onClick={startBattle}>Reprendre</button>}
                 {battle?.status === 'started' && <button className="btn-stop" onClick={stopBattle}>Mettre en Pause</button>}
                 {battle?.current_round != 0 && <button className="btn-restart" onClick={restartBattle}>Recommencer</button>}
