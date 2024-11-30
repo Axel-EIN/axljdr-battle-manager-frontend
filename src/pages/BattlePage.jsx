@@ -104,6 +104,12 @@ const BattlePage = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
+    socket.on('isOut', (outFirstname) => {
+      retrieveOneBattle(combatID);
+      const log = `${outFirstname} est hors de combat !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
     return () => { // Nettoyage dees écouteurs d'événement lors du démontage du composant
       socket.off('editedBattle');
       socket.off('deletedBattle');
