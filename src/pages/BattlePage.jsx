@@ -80,6 +80,12 @@ const BattlePage = () => {
       setLogs((prevState) => [...prevState, log]);
     });
 
+    socket.on('teamVictory', (responseTeamString) => {
+      retrieveOneBattle(combatID);
+      const log = `VICTOIRE de l'équipe ${responseTeamString} ! Ce combat est terminé !`;
+      setLogs((prevState) => [...prevState, log]);
+    });
+
     socket.on('stanceChanged', (charFirstname, stance) => {
       retrieveOneBattle(combatID);
       const log = `Le personnage ${charFirstname} prend la posture ${stance} !`;
