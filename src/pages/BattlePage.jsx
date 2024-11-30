@@ -115,17 +115,17 @@ const BattlePage = () => {
   }, []);
 
   const startBattle = async () => {
-    try { await axios.put(URLS.BATTLE_START + '/' + combatID); }
+    try { await axios.put(URLS.BATTLE_START + '/' + combatID, {}, { withCredentials: true }); }
     catch ({response}) { alert(response.data.error); }
   }
 
   const stopBattle = async () => {
-    try { await axios.put(URLS.BATTLE_STOP + '/' + combatID); }
+    try { await axios.put(URLS.BATTLE_STOP + '/' + combatID, {}, { withCredentials: true }); }
     catch ({response}) { alert(response.data.error); }
   }
 
   const restartBattle = async () => {
-    try { await axios.put(URLS.BATTLE_RESTART + '/' + combatID); }
+    try { await axios.put(URLS.BATTLE_RESTART + '/' + combatID, {}, { withCredentials: true }); }
     catch ({response}) { alert(response.data.error); }
   }
 
