@@ -1,16 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
-import "./Template.css";
 
 const Template = () => {
   return (
     <>
       <Header />
-      <main>
-        <div className="container">
-            <Outlet />
-        </div>
+      <main className="container">
+          <Outlet />
       </main>
       <Footer />
     </>
