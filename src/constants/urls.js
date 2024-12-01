@@ -25,6 +25,7 @@ export const URLS = {
     // COMBAT
     BATTLE_ALL: `${BASE_URL}/api/battle/all`,
     BATTLE_ONE: `${BASE_URL}/api/battle/one`,
+    BATTLE_LASTACTIVE: `${BASE_URL}/api/battle/lastactive`,
     BATTLE_ADD: `${BASE_URL}/api/battle/add`,
     BATTLE_EDIT: `${BASE_URL}/api/battle/edit`,
     BATTLE_DELETE: `${BASE_URL}/api/battle/delete`,
