@@ -1,0 +1,48 @@
+.visible { display: block; }
+
+.hidden { display: none; }
+
+.hover-zoom:hover { transform: scale(1.125); }
+
+@keyframes logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes text-blinking-red {
+    0% { color: red ; }
+    100% { color: var(--color-primary-lightest); }
+}
+
+@keyframes halo-red {
+    0% { filter: drop-shadow(0 0 8px red); }
+    100% { filter: drop-shadow(0 0 12px var(--color-primary-light)); }
+}
+
+@keyframes halo-blue {
+    0% { filter: drop-shadow(0 0 8px var(--color-secondary-light)); }
+    50% { filter: drop-shadow(0 0 12px var(--color-secondary-lightest)); }
+    100% { filter: drop-shadow(0 0 8px var(--color-secondary-light)); }
+}
+
+@keyframes halo-pink {
+    0% { filter: drop-shadow(0 0 8px var(--color-primary)); }
+    50% { filter: drop-shadow(0 0 12px var(--color-primary-lighter)); }
+    100% { filter: drop-shadow(0 0 8px var(--color-primary)); }
+}
+
+@keyframes impact1 {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes impact2 {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
