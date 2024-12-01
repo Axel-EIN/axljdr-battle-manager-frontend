@@ -1,0 +1,36 @@
+.flex-table {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: var(--font-size-medium);
+    width: 100%;
+}
+
+.grid-row {
+    display: grid;
+    gap: 0.5rem;
+    width: 100%;
+
+    &.head {
+        font-weight: bolder;
+        background-color: var(--color-black-alpha-50);
+        border-radius: 0.75rem;
+    }
+    
+    &.fr5 { grid-template-columns: repeat(5, 1fr); }
+    &.fr7 { grid-template-columns: repeat(7, 1fr); }
+    &.fr8 { grid-template-columns: repeat(8, 1fr); }
+    &.fr14 { grid-template-columns: repeat(14, 1fr); }
+    &.fr15 { grid-template-columns: repeat(15, 1fr); }
+
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .span2 { grid-column: span 2; }
+    .span3 { grid-column: span 3; }
+    .span4 { grid-column: span 4; }
+}
