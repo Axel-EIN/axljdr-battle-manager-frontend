@@ -1,0 +1,54 @@
+.home-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
+    grid-template-rows: repeat(2, auto);   /* 2 lignes automatiques */
+
+    .battle-current {
+        grid-column: span 2;  /* Le contenu prend 2 colonnes */
+        grid-row: span 2;     /* Le contenu prend 2 lignes */
+        display: flex;
+        flex-direction: column;
+
+        .card.big {
+            .versus {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                flex-grow: 1;
+            
+                .team {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border-radius: 1rem;
+                }
+            
+                .teamA { background-color: var(--color-primary-darkest-alpha-60); }
+                .teamB { background-color: var(--color-secondary-alpha-60); }
+            }
+            
+            button {
+                margin-top: auto;
+                margin-bottom: 1rem;
+            }
+        }
+        
+    }
+
+    .battle-history {
+        grid-column: span 1;
+        grid-row: span 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .char-ranking {
+        grid-column: span 1;
+        grid-row: span 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
