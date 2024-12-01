@@ -1,0 +1,96 @@
+:root {
+    --font-base: 'Barlow';
+    --line-height-base: 1.5;
+    --line-height-buttons: 1;
+  
+    /* FONT SIZES */
+    --font-size-xdisplay: 96px;
+    --font-size-display: 64px;
+    --font-size-xxlarge: 52px;
+    --font-size-xlarge: 42px;
+    --font-size-large: 28px;
+    --font-size-medium: 20px;
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-xsmall: 12px;
+
+    a {
+        color: var(--link-color-base);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--link-color-hover-base);
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, .display {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.display {
+    font-family: 'Shogun';
+    font-size: var(--font-size-xdisplay);
+    color: var(--color-white);
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Misaki';
+    font-size: var(--font-size-display);
+    color: var(--color-white);
+    font-weight: lighter;
+    text-align: center;
+    text-shadow: 0px 0px 3rem var(--color-black-alpha-50);
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-family: 'Present';
+    font-size: var(--font-size-xlarge);
+    text-transform: capitalize;
+    color: var(--color-white);
+    font-weight: lighter;
+    text-shadow: 0px 0px 1rem var(--color-black-alpha-50);
+    margin-bottom: 0.25rem;
+}
+
+h3 {
+    font-family: 'Barlow Bold';
+    font-size: var(--font-size-large);
+    color: var(--color-light);
+}
+
+h4 {
+    font-family: 'Barlow';
+    font-size: var(--font-size-medium);
+    display: inline;
+    color: var(--color-light);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url("../fonts/barlow-regular-semi-condensed.ttf");
+}
+
+@font-face {
+    font-family: 'Barlow Bold';
+    src: url("../fonts/barlow-bold.ttf");
+}
+
+@font-face {
+    font-family: "Misaki";
+    src: url("../fonts/misaki-regular.otf");
+}
+
+@font-face {
+    font-family: "Shogun";
+    src: url("../fonts/shoguns-clan-accented.otf");
+}
+
+@font-face {
+    font-family: "Present";
+    src: url("../fonts/present-lt-black-condensed.otf");
+}
