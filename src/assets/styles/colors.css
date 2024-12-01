@@ -1,0 +1,79 @@
+:root {
+    --font-color-base: var(--color-light);
+    --link-color-base: var(--color-light-darker);
+    --link-color-hover-base: var(--color-white);
+
+    /* PRIMARY COLOR */
+    --color-primary-lightest: #ffa6b8;
+    --color-primary-lighter: #ff7995;
+    --color-primary-light:  #ff4d71;
+    --color-primary: #FF204E;
+    --color-primary-dark: #e6002f;
+    --color-primary-darker: #ac0024;
+    --color-primary-darkest: #730018;
+
+    /* TRANSPARENT VERSION */
+    --color-primary-alpha-25: #FF204E40;
+    --color-primary-alpha-50: #FF204E80;
+    --color-primary-alpha-75: #FF204EBB;
+    --color-primary-darkest-alpha-25: #73001840;
+    --color-primary-darkest-alpha-50: #73001880;
+    --color-primary-darkest-alpha-75: #730018BB;
+
+    /* SECONDARY COLOR */
+    --color-secondary-lightest: #529eff;
+    --color-secondary-lighter: #006efa;
+    --color-secondary-light: #0048a4;
+    --color-secondary: #00224D;
+    --color-secondary-dark: #001b3e;
+    --color-secondary-darker: #00142e;
+    --color-secondary-darkest: #00070f;
+
+    /* TRANSPARENT VERSION */
+    --color-secondary-lighter-alpha-25: #006efa40;
+    --color-secondary-lighter-alpha-50: #006efa80;
+    --color-secondary-lighter-alpha-75: #006efaBB;
+    --color-secondary-alpha-25: #00224D40;
+    --color-secondary-alpha-50: #00224D80;
+    --color-secondary-alpha-75: #00224DBB;
+
+
+    --color-secondary-darkest-alpha-25: #00070f40;
+    --color-secondary-darkest-alpha-50: #00070f80;
+    --color-secondary-darkest-alpha-75: #00070fBB;
+
+    /* WHITE & LIGHT */
+    --color-white: white;
+
+    /* TRANSPARENT VERSION */
+    --color-white-alpha-10: rgba(255,255,255,1);
+    --color-white-alpha-40: rgba(255,255,255,0.4);
+    --color-white-alpha-50: rgba(255,255,255,0.5);
+
+    --color-light-lightest: #f0f0f0;
+    --color-light-lighter: #e0e0e0;
+    --color-light-light: #d0d0d0;
+    --color-light: #c0c0c0;
+    --color-light-dark: #b0b0b0;
+    --color-light-darker: #a0a0a0;
+    --color-light-darkest: #909090;
+
+    --color-gray: #808080;
+
+    /* BLACK & DARK */
+
+    --color-dark-lightest: #707070;
+    --color-dark-lighter: #606060;
+    --color-dark-light: #505050;
+    --color-dark: #404040;
+    --color-dark-dark: #303030;
+    --color-dark-darker: #202020;
+    --color-dark-darkest: #101010;
+
+    --color-black: black;
+
+    /* TRANSPARENT VERSION */
+    --color-black-alpha-25: rgba(0,0,0,0.25);
+    --color-black-alpha-50: rgba(0,0,0,0.5);
+    --color-black-alpha-75: rgba(0,0,0,0.75);
+}
