@@ -1,61 +1,99 @@
 header {
-  display: flex;
-  flex-direction: column;
-  background-color: #334455;
-
-  #adminbar {
     display: flex;
-    justify-content: center;
-    background-color: purple;
-  }
+    flex-direction: column;
+    color: var(--font-color-base);
 
-  #mjbar {
-    display: flex;
-    justify-content: center;
-    background-color: red;
-  }
-
-  #navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    min-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: #aaa;
-  
-    #logo {
-      margin-right: 2rem;
-      img {
-        width: 96px;
-      }
-    }
-  
-    nav {
-      ul {
-        margin-left: 0;
-        padding-left: 0;
+    .topbar {
         display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        li {
-          margin-right: 1rem;
-        }
-      }
-    }
-  
-    #userzone {
-      margin-left: auto;
-      
-      .logged, .notlogged {
-        display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-      }
+        padding: 0.25rem;
+    
+        &.admin { background-color: var(--color-secondary-alpha-75); }
+        &.gamemaster { background-color: var(--color-primary-darkest-alpha-75); }
+    
+        .icon-text-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            font-size: var(--font-size-base);
+            font-weight: bold;
+            gap: 0.25rem;
+            opacity: 0.4;
+            text-decoration: none;
+            transition: all 0.33s ease;
+        
+            &:hover {
+              opacity: 1;
+            }
+        }
     }
-  }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        background-image: linear-gradient( #000000CC, #00000080 , #00000000);
+    
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            width: var(--breakpoint-desktop);
+            margin: 0 auto;
+            padding-top: 0.5rem;
+            box-sizing: border-box;
+    
+            .logo {
+                margin-right: 1.5rem;
+                will-change: filter;
+                transition: filter 300ms;
+                animation-name: logo-spin;
+                animation-duration: 4s;
+                img { width: 84px; }
+                &:hover { filter: drop-shadow(0 0 2rem var(--color-primary)); }
+            }
+    
+            .navbar-menu {
+                margin-left: 0;
+                padding-left: 0;
+                list-style-type: none;
+                display: flex;
+                gap: 1rem;
+                flex-direction: row;
+    
+                .navbar-menu-item {
+                    will-change: filter;
+                    transition: filter 300ms;
+    
+                    &:hover { filter: drop-shadow(0 0 1rem var(--color-primary)); }
+    
+                    .navbar-menu-link {
+                        padding: 0.25rem 0;
+                        text-transform: uppercase;
+                        color: var(--link-color-base);
+                        font-size: var(--font-size-medium);
+                        text-decoration: none;
+    
+                        &:hover { color: var(--link-color-hover-base); }
+    
+                        &.active {
+                            color: var(--link-color-hover-base);
+                            font-weight: bold;
+                            border-bottom: 3px solid var(--color-primary);
+                        }
+                    }
+                }
+            }
+    
+            .navbar-user {
+                margin-left: auto;
+                
+                .logged, .notlogged {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                }
+            }        
+        }
+    }
 }
