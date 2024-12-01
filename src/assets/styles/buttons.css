@@ -1,0 +1,115 @@
+button {
+    background: none;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    color: var(--link-color-base);
+
+    &:hover {
+        cursor: pointer;
+        color: var(--link-color-hover-base);
+    }
+}
+
+.btn-icon {
+    cursor: pointer;
+    transition: all 0.33s ease;
+    font-size: var(--font-size-medium);
+    opacity: 0.66;
+
+    &.large { font-size: var(--font-size-xxlarge); }
+
+    &:hover {
+        color: var(--color-white);
+        opacity: 1;
+    }
+}
+
+.btn-small {
+    gap: 0.2rem;
+    padding: 0.33rem 0.66rem;
+    font-family: var(--font-base);
+    font-size: var(--font-size-small);
+}
+
+.btn-medium {
+    gap: 0.5rem;
+    padding: 0.66rem 1.2rem;
+    font-family: var(--font-base);
+    font-size: var(--font-size-medium);
+}
+
+.btn-large {
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-family: var(--font-base);
+    font-size: var(--font-size-large);
+    min-width: 180px;
+}
+
+
+.btn-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+    font-weight: bold;
+    color: var(--color-white);
+    transition: all 0.33s ease;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-image: url('/ui/button-bg-stroke-red.png') 16 16 16 16 fill repeat;
+        filter: brightness(85%);
+        transition: all 0.3s ease; 
+    }
+
+    &.blue::before { border-image: url('/ui/button-bg-stroke-blue.png') 16 16 16 16 fill repeat; }
+    &.pink::before { border-image: url('/ui/button-bg-stroke-pink.png') 16 16 16 16 fill repeat; }
+    &.purple::before { border-image: url('/ui/button-bg-stroke-purple.png') 16 16 16 16 fill repeat; }
+
+    &:hover::before {
+        filter: brightness(120%);
+    }
+}
+
+.btn-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+    font-weight: bold;
+    border-radius: 1rem;
+    background-color: var(--color-black-alpha-25);
+    transition: all 0.3s ease; 
+    
+    &:hover {
+        color: var(--color-white);
+        background-color: var(--color-black-alpha-50);
+    }
+
+    &.teamA {
+        width: 380px;
+        margin-top: 0.5rem;
+        background-color: var(--color-primary-darkest-alpha-50);
+        &:hover { background-color: var(--color-primary); }
+    }
+
+    &.teamB {
+        width: 380px;
+        margin-top: 0.5rem;
+        background-color: var(--color-secondary-alpha-50);
+        &:hover { background-color: var(--color-secondary-lighter); }
+    }
+
+}
