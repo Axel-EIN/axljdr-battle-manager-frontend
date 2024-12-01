@@ -3,8 +3,8 @@ import { URLS } from '../../constants/urls.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { GrEdit } from "react-icons/gr";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const AdminPage = () => {
     const [users, setUsers] = useState([]);
@@ -33,40 +33,37 @@ const AdminPage = () => {
 
     return (
         <>
-            <h1>Bienvenue sur la page d'administration !</h1>
+            <h1>Panneau d'administration</h1>
 
-            <h2>Utilisateurs :</h2>
-            <button onClick={() => navigate("/admin/utilisateur/creer")}>Créer un Utilisateur</button>
+            <h2>Utilisateurs</h2>
+            <button className="btn-primary btn-medium" onClick={() => navigate("/admin/utilisateur/creer")}>Ajouter un Utilisateur</button>
 
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Identifiant</th>
-                    <th>Email</th>
-                    <th>Prénom</th>
-                    <th>Avatar</th>
-                    <th>Role</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </tr>
-                </thead>
-                <tbody>
-                {users.map((user) =>
-                    <tr key={user.id}>
-                        <td>{user.id}</td>
-                        <td>{user.login}</td>
-                        <td>{user.email}</td>
-                        <td>{user.firstname}</td>
-                        <td>{user.avatar? <img src={`${URLS.BASE_URL}/${user.avatar}`} /> : <img src={'https://i.pravatar.cc/96'} /> }</td>
-                        <td>{user.role}</td>
-                        <td><Link to={'/admin/utilisateur/modifier' + '/' + user.id}><EditIcon /></Link></td>
-                        <td><Link><DeleteIcon onClick={() => deleteUser(user.id)} /></Link></td>
-                    </tr>
+            <div className="flex-table"> 
+                <div className="grid-row fr14 head">
+                    <div className="span2">Avatar</div>
+                    <div className="span2">Identifiant</div>
+                    <div className="span2">Prénom</div>
+                    <div className="span3">Email</div>
+                    <div className="span2">Rôle</div>
+                    <div>Personnages</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                {users.map(user =>
+                    <div key={user.id} className="grid-row fr14 card row">
+                        <div className="span2">
+                            {user.avatar? <img className="avatar small" src={`${URLS.BASE_URL}/${user.avatar}`} /> : <img className="avatar small" src={'https://i.pravatar.cc/96'} /> }
+                        </div>
+                        <div className="span2"><strong>{user.login}</strong></div>
+                        <div className="span2">{user.firstname}</div>
+                        <div className="span3">{user.email}</div>
+                        <div className="span2">{user.role}</div>
+                        <div>{user.Characters.length}</div>
+                        <div><Link to={'/admin/utilisateur/modifier' + '/' + user.id}><GrEdit /></Link></div>
+                        <div><Link><FaRegTrashCan onClick={() => window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?") && deleteUser(user.id)} /></Link></div>
+                    </div>
                 )}
-                </tbody>
-                <tfoot></tfoot>
-            </table>
+            </div>
         </>
     );
 };
