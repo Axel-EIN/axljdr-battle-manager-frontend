@@ -1,0 +1,88 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+
+    &.single {
+        padding-top: 3rem;
+        max-width: 720px;
+    }
+
+    &.large {
+        max-width: 1024px;
+        .form-row {
+            gap: 2rem;
+        }
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    label {
+        font-size: var(--font-size-medium);
+    }
+
+    input, select, option {
+        width: 380px;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        color: var(--font-color-base);
+        font-size: var(--font-size-medium);
+        border: solid 1px var(--color-dark-lightest);
+        background-color: var(--color-black-alpha-50);
+    }
+
+    .label-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .lost-password {
+            margin: 0 auto;
+        }
+    }
+
+    .login-register-btn-wrapper {
+        gap: 0.5rem;
+        display: flex;
+        margin: 1rem 0;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: auto;
+        margin-bottom: 1rem;
+    }
+
+    .select-character {
+        gap: 0.5rem;
+        display: flex;
+        flex-direction: row;
+    
+        .btn-icon-delete {
+            cursor: pointer;
+            padding: 0.65rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: var(--font-size-medium);
+    
+            &.teamA:hover { background-color: var(--color-primary); }
+            &.teamB:hover { background-color: var(--color-secondary-lighter); }
+        }
+    }
+}
