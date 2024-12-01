@@ -1,0 +1,48 @@
+.avatar {
+    width: 96px;
+    border-radius: 3rem;
+
+    &.small {
+        width: 48px;
+        border-radius: 2rem;
+    }
+}
+
+.portrait {
+    width: 96px;
+    border-radius: 0.5rem;
+
+    &.medium {
+        width: 120px;
+        border-radius: 1rem;
+    }
+
+    &.small {
+        width: 48px;
+        border-radius: 0.5rem;
+    }
+
+    &.xsmall {
+        width: 32px;
+    }
+}
+
+.illustration {
+    width: 96px;
+    border-radius: 0.5rem;
+
+    &.small {
+        width: 48px;
+        border-radius: 0.5rem;
+    }
+
+    &.medium {
+        width: 128px;
+        border-radius: 1rem;
+    }
+
+    &.big {
+        width: 220px;
+        border-radius: 1.5rem;
+    }
+}
