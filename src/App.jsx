@@ -1,3 +1,4 @@
+import './assets/styles/base.css';
 import './assets/styles/colors.css';
 import './assets/styles/fonts.css';
 import './assets/styles/buttons.css';
