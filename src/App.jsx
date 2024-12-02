@@ -1,3 +1,4 @@
+import './assets/styles/fonts.css';
 import './assets/styles/buttons.css';
 import './assets/styles/cards.css';
 import './assets/styles/animations.css';
