@@ -1,23 +1,27 @@
-import { Link } from 'react-router-dom';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddIcon from '@mui/icons-material/Add';
+import { FaRegTrashCan } from "react-icons/fa6";
 
 function SelectTeamChar({ fieldsTeam, teamString, characters, propsUpdateFieldF, propsRemoveFieldF, propsAddFieldF }) {
-  return (
-    <>
-      <h3>Team {teamString}</h3>
-      {fieldsTeam?.map((oneField, indexField) =>
-        <div key={indexField}>
-          <select value={oneField.value} onChange={event => propsUpdateFieldF(teamString, indexField, event)}>
-            <option value=''>Choisir un personnage</option>
-            {characters.map(character => <option value={character.id} key={character.id}>{character.firstname}</option>)}
-          </select>
-          <DeleteIcon onClick={() => propsRemoveFieldF(teamString, indexField)} />
-        </div>
-      )}
-      <Link><AddIcon onClick={() => propsAddFieldF(teamString)} /></Link>
-    </>
-  );
+    return (
+        <>
+
+            {fieldsTeam?.map((oneField, indexField) =>
+                <div key={indexField} className="select-character">
+
+                    <select value={oneField.value} onChange={event => propsUpdateFieldF(teamString, indexField, event)}>
+                        <option value=''>Choisir un personnage</option>
+                        {characters.map(character =>
+                            <option value={character.id} key={character.id}>{character.firstname}</option>)}
+                    </select>
+
+                    <FaRegTrashCan className={`btn-icon-delete team${teamString}`} onClick={() => propsRemoveFieldF(teamString, indexField)} />
+
+                </div>
+            )}
+
+            <button className={`btn-secondary btn-medium team${teamString}`} onClick={(e) => { e.preventDefault(); propsAddFieldF(teamString) }}>Ajouter</button>
+
+        </>
+    );
 }
 
 export default SelectTeamChar;
