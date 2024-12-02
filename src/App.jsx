@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Template from "./components/templates/Template.jsx";
 import TemplateLogged from "./components/templates/TemplateLogged.jsx";
