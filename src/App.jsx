@@ -16,7 +16,7 @@ import TemplateAdmin from "./components/templates/TemplateAdmin.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
-import AccountPage from "./pages/AccountPage.jsx";
+import MyAccountPage from "./pages/MyAccountPage.jsx";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import UserAddPage from "./pages/admin/UserAddPage.jsx";
 import UserEditPage from "./pages/admin/UserEditPage.jsx";
@@ -45,7 +45,7 @@ function App() {
           </Route>
 
           <Route element={<TemplateLogged />} >
-            <Route path="/mon-compte" element={<AccountPage />} />
+            <Route path="/mon-compte" element={<MyAccountPage />} />
           </Route>
 
           <Route element={<TemplateGamemaster />} >
