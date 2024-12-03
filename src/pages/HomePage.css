@@ -1,4 +1,5 @@
 .home-grid {
+    margin-top: 1rem;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
@@ -10,32 +11,96 @@
         display: flex;
         flex-direction: column;
 
+        .live {
+            display: flex;
+            justify-items: center;
+            gap: 1rem;
+            animation: text-blinking-red 2s infinite alternate, halo 2s infinite alternate;
+        }
+
         .card.big {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+
+                .title {
+                    text-align: center;
+                    color: var(--color-white);
+                    font-size: var(--font-size-xxlarge);
+                }
+
+                dl.infos {
+                    display: flex;
+                    margin: 0;
+                    justify-content: center;
+                    gap: 2rem;
+                    
+
+                    dt {
+                        color: var(--color-light-darkest);
+                        font-size: var(--font-size-medium);
+                        text-align: center;
+                    }
+                    dd {
+                        margin: 0;
+                        padding-left: 0;
+                        font-weight: bolder;
+                        font-size: var(--font-size-large);
+                        text-align: center;
+                    }
+                }
+            
+
             .versus {
-                display: flex;
-                align-items: center;
-                gap: 2rem;
-                flex-grow: 1;
+                gap: 1rem;
+                margin: 0 0.5rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
             
                 .team {
+                    gap: 1rem;
+                    padding: 1rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    border-radius: 1rem;
+                    justify-content: center;
+                    border: 1px solid var(--color-dark-light);
+                }
+
+                .vs {
+                    position: absolute;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 1rem;
-                    padding: 1rem;
-                    border-radius: 1rem;
+                    font-size: var(--font-size-xlarge);
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-60%, 50%);
                 }
             
-                .teamA { background-color: var(--color-primary-darkest-alpha-60); }
-                .teamB { background-color: var(--color-secondary-alpha-60); }
+                .teamA { background-color: var(--color-primary-darkest-alpha-25); }
+                .teamB { background-color: var(--color-secondary-alpha-25); }
             }
             
-            button {
-                margin-top: auto;
-                margin-bottom: 1rem;
+            .buttons-zone {
+                margin-top: 1rem;
+                width: 100%;
+                display: grid;
+                grid-column-gap: 1rem;
+                justify-items: center;
+                align-items: center;
+                grid-template-columns: 1fr 1fr 1fr;
+
+                button.user { grid-column-start: 2; }
+                button.gm {
+                    grid-column-start: 3;
+                    margin-left: auto;
+                    margin-top: auto;
+                }
             }
         }
-        
     }
 
     .battle-history {
@@ -43,6 +108,12 @@
         grid-row: span 1;
         display: flex;
         flex-direction: column;
+
+        .list-battle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
     }
 
     .char-ranking {
@@ -50,5 +121,17 @@
         grid-row: span 1;
         display: flex;
         flex-direction: column;
+
+        .list-character {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: var(--font-size-medium);
+            font-weight: lighter;
+            text-align: center;
+        }
     }
 }
