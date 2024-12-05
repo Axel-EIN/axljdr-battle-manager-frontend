@@ -1,5 +1,5 @@
 // const BASE_URL = 'http://localhost:8080';
-const BASE_URL = 'https://axljdrbattle-back.onrender.com';
+const BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 export const URLS = {
     // BASE
