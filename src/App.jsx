@@ -16,7 +16,7 @@ import TemplateAdmin from "./components/templates/TemplateAdmin.jsx";
 import HomePage from "./pages/home/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
-import MyAccountPage from "./pages/MyAccountPage.jsx";
+import MyAccountPage from "./pages/myaccount/MyAccountPage.jsx";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import UserAddPage from "./pages/admin/UserAddPage.jsx";
 import UserEditPage from "./pages/admin/UserEditPage.jsx";
