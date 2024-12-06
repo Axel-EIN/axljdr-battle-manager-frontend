@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BigBattleCard from '../components/battles/BigBattleCard.jsx';
 import { URLS } from '../constants/urls.js';
+import { NA } from '../constants/na.js';
 import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
 import { BsBroadcast } from "react-icons/bs";
 import { FaRegEye } from "react-icons/fa6";
@@ -31,7 +32,7 @@ function HomePage() {
     };
 
     useEffect(() => {
-        const socket = io(URLS.BASE_URL); // Initialisation connexion WebSocket avec Back-End
+        const socket = io(URLS.BACK_URL); // Initialisation connexion WebSocket avec Back-End
         getAllCharacters();
         getAllBattles();
         getLastActivedBattle();
@@ -74,7 +75,10 @@ function HomePage() {
                     </div>
                     {characters.slice(0,5).map(c =>
                         <div className="card row grid-row fr7" key={c.id}>
-                            <div>{c.portrait? <img className="portrait xsmall" src={`${URLS.BASE_URL}/${c.portrait}`} /> : <img className="portrait small" src={'https://i.pravatar.cc/96'} /> }</div>
+                            <div>{c.portrait?
+                                <img className="portrait xsmall" src={`${URLS.BACK_URL}/${c.portrait}`} />
+                                : <img className="portrait small" src={`${NA.PORTRAIT}`} /> }
+                            </div>
                             <div className="span2"><strong>{c.firstname}</strong></div>
                             <div className="span2">{c.User?.firstname}</div>
                             <div></div>
