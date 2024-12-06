@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { ContexteUser } from "../contexts/contexteUser";
 import { URLS } from "../constants/urls";
+import { NA } from "../constants/na";
 import axios from 'axios';
 
 const MyAccountPage = () => {
@@ -48,7 +49,8 @@ const MyAccountPage = () => {
                             <dt>Votre Avatar :</dt>
                             <dd>
                                 {user.avatar?
-                                    <img src={`${URLS.BASE_URL}/${user.avatar}`} alt="Avatar de l'Utilisateur" /> : <img src={'https://i.pravatar.cc/96'} />}
+                                    <img src={`${URLS.BACK_URL}/${user.avatar}`} alt="Avatar de l'Utilisateur" />
+                                    : <img src={`${NA.AVATAR}`} />}
                             </dd>
                         </dl>
                        
@@ -62,7 +64,7 @@ const MyAccountPage = () => {
                             <>
                                 {myUser?.Characters?.map((character) =>
                                     <div className="card row align-center" key={character.id}>
-                                        <img className="portrait" src={`${URLS.BASE_URL}/${character.portrait}`} alt="Portrait du Personnage" />
+                                        <img className="portrait" src={`${URLS.BACK_URL}/${character.portrait}` || `${NA.PORTRAIT}`} alt="Portrait du Personnage" />
                                         <strong>{character.lastname} {character.firstname}</strong>
                                     </div>
                                 )}
