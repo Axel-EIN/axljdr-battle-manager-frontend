@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { ContexteUser } from "../contexts/contexteUser";
 import { useParams } from "react-router-dom";
 import { URLS } from '../constants/urls.js';
+import { NA } from '../constants/na.js';
 import axios from 'axios';
 import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
 import BattlePortrait from "../components/characters/BattlePortrait.jsx";
@@ -34,7 +35,7 @@ const BattlePage = () => {
     }
   
     useEffect(() => {
-        const socket = io(URLS.BASE_URL); // Initialisation connexion WebSocket avec Back-End
+        const socket = io(URLS.BACK_URL); // Initialisation connexion WebSocket avec Back-End
         document.body.classList.add('active-battle-bg');
 
         const mainElement = document.querySelector('main');
@@ -246,7 +247,7 @@ const BattlePage = () => {
                     <div className="winner-list">
                         {battle.Participations.filter(p => p.team === battle.winner_team).map(p =>
                             <div className="character-illustration-card">
-                                <img className="illustration big" src={p.Character.illustration? `${URLS.BASE_URL}/${p.Character.illustration}` : 'https://i.pravatar.cc/96'} 
+                                <img className="illustration big" src={p.Character.illustration? `${URLS.BACK_URL}/${p.Character.illustration}` : `${NA.ILLUSTRATION}`} 
                                     alt={p.Character.firstname} title={p.Character.firstname} />
                                 <div className="info-character">
                                     <h2>{p.Character.firstname}</h2>
@@ -259,7 +260,7 @@ const BattlePage = () => {
                     <div className="loser-list">
                         {battle.Participations.filter(p => p.team != battle.winner_team).map(p =>
                             <div className="character-portrait-name">
-                                <img className="portrait" src={p.Character.portrait? `${URLS.BASE_URL}/${p.Character.portrait}` : 'https://i.pravatar.cc/96'}
+                                <img className="portrait" src={p.Character.portrait? `${URLS.BACK_URL}/${p.Character.portrait}` : `${NA.PORTRAIT}`}
                                     alt={p.Character.firstname} title={p.Character.firstname} />
                                 <div className="loser-info">
                                     <strong>{p.Character.firstname}</strong>
