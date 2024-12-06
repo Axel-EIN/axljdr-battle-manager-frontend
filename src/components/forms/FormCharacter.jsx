@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 
 const FormCharacter = ({ submitPropsFunction, initialCharacter = false }) => {
     const [lastname, setLastname] = useState(initialCharacter.lastname || '');
@@ -53,7 +54,7 @@ const FormCharacter = ({ submitPropsFunction, initialCharacter = false }) => {
     
         <div className="form-row">
             {initialCharacter && initialCharacter.portrait && !portrait &&
-                <img className="portrait" src={`${URLS.BASE_URL}/${initialCharacter.portrait}`} />}
+                <img className="portrait" src={`${URLS.BACK_URL}/${initialCharacter.portrait}` || NA.PORTRAIT} />}
             <div className="label-input">
                 <label htmlFor="portrait">Portrait</label>
                 <input type="file" name="portrait" onChange={(event) => setPortrait(event.target.files[0])} />
@@ -62,7 +63,7 @@ const FormCharacter = ({ submitPropsFunction, initialCharacter = false }) => {
 
         <div className="form-row">
             {initialCharacter && initialCharacter.illustration && !illustration &&
-                <img className="illustration" src={`${URLS.BASE_URL}/${initialCharacter.illustration}`} />}
+                <img className="illustration" src={`${URLS.BACK_URL}/${initialCharacter.illustration}` || NA.ILLUSTRATION} />}
             <div className="label-input">
                 <label htmlFor="illustration">Illustration :</label>
                 <input type="file" name="illustration" onChange={(event) => setIllustration(event.target.files[0])} />
