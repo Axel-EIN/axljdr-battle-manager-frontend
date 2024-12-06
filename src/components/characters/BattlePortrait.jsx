@@ -1,4 +1,5 @@
 import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 import { FaHeartPulse } from "react-icons/fa6";
 import { FaRunning } from "react-icons/fa";
 import { IoSpeedometerSharp } from "react-icons/io5";
@@ -25,7 +26,7 @@ function BattlePortrait( { participation, key, isActive = false, isPlayed = fals
                 <div className="portrait-wrapper">
                     <img
                         className="portrait medium"
-                        src={participation.Character.portrait? `${URLS.BASE_URL}/${participation.Character.portrait}` : 'https://i.pravatar.cc/96'} 
+                        src={participation.Character.portrait? `${URLS.BACK_URL}/${participation.Character.portrait}` : `${NA.PORTRAIT}`} 
                         alt={participation.Character.firstname}
                         title={participation.Character.firstname}
                     />
