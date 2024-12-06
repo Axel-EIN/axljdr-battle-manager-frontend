@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -52,7 +53,9 @@ const AdminPage = () => {
                 {users.map(user =>
                     <div key={user.id} className="grid-row fr14 card row">
                         <div className="span2">
-                            {user.avatar? <img className="avatar small" src={`${URLS.BASE_URL}/${user.avatar}`} /> : <img className="avatar small" src={'https://i.pravatar.cc/96'} /> }
+                            {user.avatar?
+                                <img className="avatar small" src={`${URLS.BACK_URL}/${user.avatar}`} />
+                                : <img className="avatar small" src={`${NA.AVATAR}`} /> }
                         </div>
                         <div className="span2"><strong>{user.login}</strong></div>
                         <div className="span2">{user.firstname}</div>
