@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -76,10 +77,14 @@ const GameMasterPage = () => {
                             <div className="grid-row fr15 card row" key={character.id}>
                                 <div className="span2">
                                     {character.portrait?
-                                        <img className="portrait small" src={`${URLS.BASE_URL}/${character.portrait}`} />
-                                        : <img className="portrait small" src={'https://i.pravatar.cc/96'} /> }
+                                        <img className="portrait small" src={`${URLS.BACK_URL}/${character.portrait}`} />
+                                        : <img className="portrait small" src={`${NA.PORTRAIT}`} /> }
                                 </div>
-                                <div className="span2">{character.illustration? <img className="illustration small" src={`${URLS.BASE_URL}/${character.illustration}`} /> : <img className="illustration small" src={'https://i.pravatar.cc/96'} /> }</div>
+                                <div className="span2">
+                                    {character.illustration?
+                                        <img className="illustration small" src={`${URLS.BACK_URL}/${character.illustration}`} />
+                                        : <img className="illustration small" src={`${NA.ILLUSTRATION}`} /> }
+                                </div>
                                 <div className="span3">{character.lastname}</div>
                                 <div className="span3">{character.firstname}</div>
                                 <div className="span3">{character.User?.firstname}</div>
