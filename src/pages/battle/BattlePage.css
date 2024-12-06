@@ -1,8 +1,8 @@
 body.active-battle-bg {
     background-image:
         linear-gradient( rgba( 0,0,0,0.4 ) , rgba( 0,0,0,0.8 ) ),
-        url('../assets/images/backgrounds/battle.jpg'),
-        url('../assets/images/backgrounds/tileable-tigers-red.jpg');
+        url('../../assets/images/backgrounds/battle.jpg'),
+        url('../../assets/images/backgrounds/tileable-tigers-red.jpg');
 }
 
 main.active-battle-container {
