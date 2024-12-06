@@ -1,7 +1,8 @@
+import './MyAccountPage.css';
 import { useState, useContext, useEffect } from "react";
-import { ContexteUser } from "../contexts/contexteUser";
-import { URLS } from "../constants/urls";
-import { NA } from "../constants/na";
+import { ContexteUser } from "../../contexts/contexteUser";
+import { URLS } from "../../constants/urls";
+import { NA } from "../../constants/na";
 import axios from 'axios';
 
 const MyAccountPage = () => {
@@ -21,37 +22,39 @@ const MyAccountPage = () => {
         <>
             <h1>Bienvenue <strong>{user.firstname}</strong> !</h1>
 
-            <div className="layout-flex-row">
+            <div className="flex-2-1">
                 <div className="informations">
                     <h2>Vos informations</h2>
                     <div className="card column">
-                        <dl>
-                            <dt>Votre Identifiant :</dt>
-                            <dd><strong>{user.login}</strong></dd>
+                        <dl className="flex-1-1">
+                            <div>
+                                <dt>Votre Identifiant :</dt>
+                                <dd><strong>{user.login}</strong></dd>
+                            </div>
 
-                            <br/>
+                            <div>
+                                <dt>Votre Email :</dt>
+                                <dd><strong>{user.email}</strong></dd>
+                            </div>
 
-                            <dt>Votre Email :</dt>
-                            <dd><strong>{user.email}</strong></dd>
+                            <div>
+                                <dt>Votre Prénom :</dt>
+                                <dd><strong>{user.firstname}</strong></dd>
+                            </div>
 
-                            <br/>
+                            <div>
+                                <dt>Votre Rôle :</dt>
+                                <dd><strong>{user.role}</strong></dd>
+                            </div>
 
-                            <dt>Votre Prénom :</dt>
-                            <dd><strong>{user.firstname}</strong></dd>
-
-                            <br/>
-
-                            <dt>Votre Rôle :</dt>
-                            <dd><strong>{user.role}</strong></dd>
-
-                            <br/>
-
-                            <dt>Votre Avatar :</dt>
-                            <dd>
-                                {user.avatar?
-                                    <img src={`${URLS.BACK_URL}/${user.avatar}`} alt="Avatar de l'Utilisateur" />
-                                    : <img src={`${NA.AVATAR}`} />}
-                            </dd>
+                            <div>
+                                <dt>Votre Avatar :</dt>
+                                <dd>
+                                    {user.avatar?
+                                        <img className="avatar" src={`${URLS.BACK_URL}/${user.avatar}`} alt="Avatar de l'Utilisateur" title="Avatar" />
+                                        : <img src={`${NA.AVATAR}`} />}
+                                </dd>
+                            </div>
                         </dl>
                        
                     </div>
@@ -59,7 +62,7 @@ const MyAccountPage = () => {
 
                 <div className="characters">
                     <h2>Vos Personnages</h2>
-                    <div>
+                    <div class="flex-list">
                         {myUser?.Characters?.length > 0 ? (
                             <>
                                 {myUser?.Characters?.map((character) =>
