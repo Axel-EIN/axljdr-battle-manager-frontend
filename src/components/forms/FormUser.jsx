@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 
 const FormUser = ({ submitPropsFunction, initialUser = false, register = false }) => {
 
@@ -68,7 +69,7 @@ const FormUser = ({ submitPropsFunction, initialUser = false, register = false }
                     </div>
 
                     <div className="form-row">
-                        {initialUser && initialUser.avatar && !avatar && <img className="avatar" src={`${URLS.BASE_URL}/${initialUser.avatar}`} />}
+                        {initialUser && initialUser.avatar && !avatar && <img className="avatar" src={`${URLS.BACK_URL}/${initialUser.avatar}` || NA.AVATAR} />}
                         <div className="label-input">
                             <label htmlFor="avatar">Avatar</label>
                             <input type="file" name="avatar" onChange={(event) => setAvatar(event.target.files[0])} />
