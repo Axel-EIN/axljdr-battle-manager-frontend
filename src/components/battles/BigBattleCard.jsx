@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ContexteUser } from "../../contexts/contexteUser";
 import { useNavigate } from "react-router-dom";
 import { URLS } from "../../constants/urls";
+import { NA } from "../../constants/na";
 import { PiSword } from "react-icons/pi";
 import { LuScrollText } from "react-icons/lu";
 import { MdOutlineLiveTv } from "react-icons/md";
@@ -54,7 +55,7 @@ function BigBattleCard({ battle }) {
                                 <div key={p.id}>
                                     <img
                                         className="portrait"
-                                        src={p.Character.portrait? `${URLS.BASE_URL}/${p.Character.portrait}` : 'https://i.pravatar.cc/96'} 
+                                        src={p.Character.portrait? `${URLS.BACK_URL}/${p.Character.portrait}` : `${NA.PORTRAIT}`} 
                                         alt={p.Character.firstname}
                                         title={p.Character.firstname}
                                     />
@@ -69,7 +70,7 @@ function BigBattleCard({ battle }) {
                                 <div key={p.id}>
                                     <img
                                         className="portrait"
-                                        src={p.Character.portrait? `${URLS.BASE_URL}/${p.Character.portrait}` : 'https://i.pravatar.cc/96'} 
+                                        src={p.Character.portrait? `${URLS.BACK_URL}/${p.Character.portrait}` : `${NA.PORTRAIT}`} 
                                         alt={p.Character.firstname}
                                         title={p.Character.firstname}
                                     />
@@ -88,9 +89,9 @@ function BigBattleCard({ battle }) {
                                                 <span>Jouer</span>
                                             </button>
                                         ) : (
-                                            <button className="btn-primary btn-large user" onClick={() => navigate('/combat' + '/' + battle.id)}>
+                                            <button className="btn-secondary btn-large user" onClick={() => navigate('/combat' + '/' + battle.id)}>
                                                 <PiSword />
-                                                <span>Jouer</span>
+                                                <span>Regarder</span>
                                             </button>)}
                                 </>
                             ) : (
