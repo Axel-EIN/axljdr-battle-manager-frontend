@@ -1,12 +1,12 @@
 import "./BattlePage.css";
 import { useEffect, useState, useContext } from "react";
-import { ContexteUser } from "../contexts/contexteUser";
-import { useParams } from "react-router-dom";
-import { URLS } from '../constants/urls.js';
-import { NA } from '../constants/na.js';
 import axios from 'axios';
+import { ContexteUser } from "../../contexts/contexteUser";
+import { useParams } from "react-router-dom";
+import { URLS } from '../../constants/urls.js';
+import { NA } from '../../constants/na.js';
 import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
-import BattlePortrait from "../components/characters/BattlePortrait.jsx";
+import BattlePortrait from "../../components/characters/BattlePortrait.jsx";
 import { FaRegPauseCircle } from "react-icons/fa";
 import { FaRegPlayCircle } from "react-icons/fa";
 
