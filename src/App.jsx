@@ -13,7 +13,7 @@ import TemplateLogged from "./components/templates/TemplateLogged.jsx";
 import TemplateNotLogged from "./components/templates/TemplateNotLogged.jsx";
 import TemplateGamemaster from "./components/templates/TemplateGamemaster.jsx";
 import TemplateAdmin from "./components/templates/TemplateAdmin.jsx";
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from "./pages/home/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import MyAccountPage from "./pages/MyAccountPage.jsx";
@@ -25,7 +25,7 @@ import CharacterAddPage from "./pages/gamemaster/CharacterAddPage.jsx";
 import CharacterEditPage from "./pages/gamemaster/CharacterEditPage.jsx";
 import BattleAddPage from "./pages/gamemaster/BattleAddPage.jsx";
 import BattleEditPage from "./pages/gamemaster/BattleEditPage.jsx";
-import BattlePage from "./pages/BattlePage.jsx";
+import BattlePage from "./pages/battle/BattlePage.jsx";
 
 function App() {
   return ( // Définition des Routes
