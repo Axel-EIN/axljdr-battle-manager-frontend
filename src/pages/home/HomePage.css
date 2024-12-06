@@ -3,31 +3,26 @@
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
-    grid-template-rows: repeat(2, auto);   /* 2 lignes automatiques */
+    min-height: 70vh;
 
     .battle-current {
         grid-column: span 2;  /* Le contenu prend 2 colonnes */
-        grid-row: span 2;     /* Le contenu prend 2 lignes */
         display: flex;
         flex-direction: column;
+        height: 100%;
 
-        .live {
+        .big-battle-card {
             display: flex;
-            justify-items: center;
-            gap: 1rem;
-            animation: text-blinking-red 2s infinite alternate, halo-red 2s infinite alternate;
-        }
-
-        .card.big {
-            display: flex;
+            height: 100%;
             flex-direction: column;
-            justify-content: space-around;
-
+            align-items: center;
+            gap: 1.5rem;
 
                 .title {
                     text-align: center;
+                    border-radius: 3rem;
                     color: var(--color-white);
-                    font-size: var(--font-size-xxlarge);
+                    margin: 0;
                 }
 
                 dl.infos {
@@ -53,11 +48,31 @@
             
 
             .versus {
-                gap: 1rem;
-                margin: 0 0.5rem;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                grid-template-columns: 1fr auto 1fr;
+                gap: 2rem;
+                width: 100%;
             
+                .vs {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .live {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: bolder;
+                        gap: 0.5rem;
+                        background-color: var(--color-black-alpha-50);
+                        border-radius: 1rem;
+                        padding: 0.5rem;
+                        animation: text-blinking-red 2s infinite alternate, halo-red 2s infinite alternate;
+                    }
+                }
+
                 .team {
                     gap: 1rem;
                     padding: 1rem;
@@ -68,70 +83,53 @@
                     justify-content: center;
                     border: 1px solid var(--color-dark-light);
                 }
-
-                .vs {
-                    position: absolute;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: var(--font-size-xlarge);
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-60%, 50%);
-                }
             
                 .teamA { background-color: var(--color-primary-darkest-alpha-25); }
                 .teamB { background-color: var(--color-secondary-alpha-25); }
             }
             
             .buttons-zone {
-                margin-top: 1rem;
-                width: 100%;
-                display: grid;
-                grid-column-gap: 1rem;
-                justify-items: center;
-                align-items: center;
-                grid-template-columns: 1fr 1fr 1fr;
-
-                button.user { grid-column-start: 2; }
-                button.gm {
-                    grid-column-start: 3;
-                    margin-left: auto;
-                    margin-top: auto;
-                }
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     }
 
-    .battle-history {
-        grid-column: span 1;
-        grid-row: span 1;
+    .ranking-battles {
         display: flex;
         flex-direction: column;
+        gap: 2rem;
 
-        .list-battle {
+        .char-ranking {
+            grid-column: span 1;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+    
+            .list-character {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+    
+            h3 {
+                font-size: var(--font-size-medium);
+                font-weight: lighter;
+                text-align: center;
+            }
         }
-    }
 
-    .char-ranking {
-        grid-column: span 1;
-        grid-row: span 1;
-        display: flex;
-        flex-direction: column;
-
-        .list-character {
+        .battle-history {
+            grid-column: span 1;
+            grid-row: span 1;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        h3 {
-            font-size: var(--font-size-medium);
-            font-weight: lighter;
-            text-align: center;
+    
+            .list-battle {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     }
 }
