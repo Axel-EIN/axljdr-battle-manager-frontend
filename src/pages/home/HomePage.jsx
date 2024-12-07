@@ -2,7 +2,7 @@ import './HomePage.css';
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import BigBattleCard from './BigBattleCard.jsx';
+import HomeActiveBattle from './HomeActiveBattle.jsx';
 import { URLS } from '../../constants/urls.js';
 import { NA } from '../../constants/na.js';
 import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
@@ -68,7 +68,7 @@ function HomePage() {
         <div className="home-grid">
 
             <div className="battle-current">
-                <BigBattleCard battle={lastActiveBattle} />
+                <HomeActiveBattle battle={lastActiveBattle} />
             </div>
 
             <div className="ranking-battles">
