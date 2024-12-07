@@ -63,15 +63,15 @@ const BattlePage = () => {
             setLogs((prevState) => [...prevState, log]);
         });
 
-        socket.on('resumedBattle', () => {
-            getOneBattle(combatID);
-            const log = 'Le combat a été repris par le MJ !';
-            setLogs((prevState) => [...prevState, log]);
-        });
-
         socket.on('pausedBattle', () => {
             getOneBattle(combatID);
             const log = 'Le combat a été mis en pause par le MJ !';
+            setLogs((prevState) => [...prevState, log]);
+        });
+
+        socket.on('resumedBattle', () => {
+            getOneBattle(combatID);
+            const log = 'Le combat a été repris par le MJ !';
             setLogs((prevState) => [...prevState, log]);
         });
 
@@ -150,12 +150,13 @@ const BattlePage = () => {
             socket.off('pausedBattle');
             socket.off('resumedBattle');
             socket.off('restartedBattle');
+            socket.off('restoredCharacters');
             socket.off('nextTurn');
             socket.off('newRound');
             socket.off('stanceChanged');
             socket.off('damageRolled');
             socket.off('dodgedAttack');
-            socket.off('restoredCharacters');
+            socket.off('isOut');
             socket.off('teamVictory');
         };
     }, [isLoading]);
