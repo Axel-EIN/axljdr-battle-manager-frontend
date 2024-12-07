@@ -255,27 +255,6 @@ main.active-battle-container {
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        box-sizing: border-box;
-    
-    
-        .character-illustration-card {
-            position: relative;
-            box-sizing: border-box;
-            border-radius: 2rem;
-            filter: drop-shadow(4px 4px 4px var(--color-black-alpha-50));
-            max-width: 240px;
-            background-color: black;
-    
-            img {
-                mask-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0.50), rgba(0,0,0,1), rgba(0,0,0,1) );
-            }
-    
-            .info-character {
-                position: absolute;
-                display: block;
-                width: 100%;
-                bottom: 1rem;
-            }
-        }
+        box-sizing: border-box;    
     }
 }
