@@ -1,6 +1,5 @@
 .card {
     display: flex;
-    gap: 1rem;
     border-radius: 1rem;
     padding: 1rem;
     background-image: linear-gradient( rgba( 255,255,255,0.1 ) , rgba( 255,255,255,0.1 ) ) ;
@@ -47,6 +46,48 @@
     
         button {
             margin-left: auto;
+        }
+    }
+}
+
+.character-card {
+    width: 190px;
+    box-sizing: border-box;
+    position: relative;
+    filter: drop-shadow(4px 4px 4px var(--color-black-alpha-50));
+
+    .div-image {
+        border-radius: 1rem;
+
+        &.pj { background-color: var(--color-secondary); }
+        &.pnj { background-color: var(--color-primary-darkest); }
+
+        img {
+            display: block;
+            border-radius: 1rem;
+            width: 100%;
+            mask-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0.50), rgba(0,0,0,1), rgba(0,0,0,1) );
+        }
+    }
+
+    .info-character {
+        position: absolute;
+        bottom: 1rem;
+        display: block;
+        width: 90%;
+        z-index: 5;
+
+        h2 {
+            display: block;
+            margin: 0;
+            font-size: var(--font-size-large);
+            text-align: center;
+        }
+
+        h4 {
+            display: block;
+            margin: 0;
+            text-align: center;
         }
     }
 }
