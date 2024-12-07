@@ -391,7 +391,8 @@ const BattlePage = () => {
                                                     Cible 2ème ATTAQUE :
                                                     <select value={target2} onChange={(event) => setTarget2(event.target.value)}>
                                                         <option value=''>Choisir un personnage cible pour une seconde attaque</option>
-                                                        {battle?.Participations.filter((item) => item.team != battle?.CurrentTurn.Participations[0]?.team).map((item, index) =>
+                                                        {battle?.Participations.filter((item) =>
+                                                            item.team != battle?.CurrentTurn.Participations[0]?.team && !item.is_out).map((item, index) =>
                                                         <option value={item.Character.id} key={index}>{item.Character.firstname}</option>)}
                                                     </select>
                                                     </div>
