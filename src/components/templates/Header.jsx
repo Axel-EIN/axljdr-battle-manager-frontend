@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import { ContexteUser } from "../../contexts/contexteUser.jsx";
 import { FaScroll } from "react-icons/fa6";
 import { FaScrewdriverWrench } from "react-icons/fa6";
@@ -9,6 +9,7 @@ function Header() {
     const { user, logoutUser } = useContext(ContexteUser); // Récupération utilisateur et fonction logout via destructuration du contexte utilisateur
     const navigate = useNavigate();
     const location = useLocation();
+    const { personnageID, combatID } = useParams();
 
     useEffect(() => {}, [user]);
 
@@ -45,10 +46,10 @@ function Header() {
                             <Link className={location.pathname === '/' ? 'navbar-menu-link active' : 'navbar-menu-link'} to="/">Accueil</Link>
                         </li>
                         <li className="navbar-menu-item">
-                            <Link className="navbar-menu-link" to="/personnages">Personnages</Link>
+                            <Link className={location.pathname === '/personnages' || location.pathname === `/personnage/${personnageID}` ? 'navbar-menu-link active' : 'navbar-menu-link'} to="/personnages">Personnages</Link>
                         </li>
                         <li className="navbar-menu-item">
-                            <Link className="navbar-menu-link" to="/combats">Combats</Link>
+                            <Link className={location.pathname === '/combats' || location.pathname === `/combat/${combatID}` ? 'navbar-menu-link active' : 'navbar-menu-link'} to="/combats">Combats</Link>
                         </li>
                     </ul>
                     <div className="navbar-user">
