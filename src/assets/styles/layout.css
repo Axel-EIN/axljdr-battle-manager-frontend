@@ -1,0 +1,65 @@
+.flex-1-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    & > div {
+        flex: 0 0 50%;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+
+    dd {
+        margin-top: 0.5rem;
+        font-size: var(--font-size-large);
+    }
+}
+
+.flex-1-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    
+    & > div {
+        flex: 0 0;
+        box-sizing: border-box;
+    }
+
+    & > :first-child {
+        flex: 0 0 33%;
+    }
+
+    & > :last-child {
+        flex: 0 0 66%;
+    }
+}
+
+.flex-1-1-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    & > div {
+        flex: 0 0 33%;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+}
+
+.flex-wrap-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.flex-wrap-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
