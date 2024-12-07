@@ -45,4 +45,9 @@
         width: 220px;
         border-radius: 1.5rem;
     }
+
+    &.max {
+        width: 100%;
+        border-radius: 2rem;
+    }
 }
