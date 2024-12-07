@@ -4,9 +4,9 @@ import axios from 'axios';
 import { ContexteUser } from "../../contexts/contexteUser";
 import { useParams } from "react-router-dom";
 import { URLS } from '../../constants/urls.js';
-import { NA } from '../../constants/na.js';
 import { io } from "socket.io-client"; // Importation de la lib socketIO pour le client (et non server)
-import BattlePortrait from "../../components/characters/BattlePortrait.jsx";
+import BattlePortrait from "./BattlePortrait.jsx";
+import BattleVictory from "./BattleVictory.jsx";
 import { FaRegPauseCircle } from "react-icons/fa";
 import { FaRegPlayCircle } from "react-icons/fa";
 
@@ -242,36 +242,7 @@ const BattlePage = () => {
 
             {isDeleted && <h2>Ce combat a été supprimée !</h2>}
 
-            {isFinished && battle?.winner_team &&
-                <div className="winner-screen">
-                    <h2>Victoire :</h2>
-                    <div className="winner-list">
-                        {battle.Participations.filter(p => p.team === battle.winner_team).map(p =>
-                            <div className="character-illustration-card">
-                                <img className="illustration big" src={p.Character.illustration? `${URLS.BACK_URL}/${p.Character.illustration}` : `${NA.ILLUSTRATION}`} 
-                                    alt={p.Character.firstname} title={p.Character.firstname} />
-                                <div className="info-character">
-                                    <h2>{p.Character.firstname}</h2>
-                                    <h4>{p.Character.User?.firstname}</h4>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                    <h3>Défaite :</h3>
-                    <div className="loser-list">
-                        {battle.Participations.filter(p => p.team != battle.winner_team).map(p =>
-                            <div className="character-portrait-name">
-                                <img className="portrait" src={p.Character.portrait? `${URLS.BACK_URL}/${p.Character.portrait}` : `${NA.PORTRAIT}`}
-                                    alt={p.Character.firstname} title={p.Character.firstname} />
-                                <div className="loser-info">
-                                    <strong>{p.Character.firstname}</strong>
-                                    <span>{p.Character.User?.firstname}</span>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            }
+            {isFinished && battle?.winner_team && <BattleVictory battle={battle} /> }
 
             {!isDeleted && !isFinished &&
                 <>
