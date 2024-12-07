@@ -28,6 +28,7 @@ import BattleAddPage from "./pages/gamemaster/BattleAddPage.jsx";
 import BattleEditPage from "./pages/gamemaster/BattleEditPage.jsx";
 import BattlePage from "./pages/battle/BattlePage.jsx";
 import CharactersListPage from "./pages/character/CharactersListPage.jsx";
+import CharacterDetailPage from "./pages/character/CharacterDetailPage.jsx";
 
 function App() {
   return ( // Définition des Routes
@@ -40,6 +41,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/combat/:combatID" element={<BattlePage />} />
             <Route path="/personnages" element={<CharactersListPage />} />
+            <Route path="/personnage/:personnageID" element={<CharacterDetailPage />} />
           </Route>
 
           <Route element={<TemplateNotLogged />} >
