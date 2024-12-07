@@ -27,6 +27,7 @@ import CharacterEditPage from "./pages/gamemaster/CharacterEditPage.jsx";
 import BattleAddPage from "./pages/gamemaster/BattleAddPage.jsx";
 import BattleEditPage from "./pages/gamemaster/BattleEditPage.jsx";
 import BattlePage from "./pages/battle/BattlePage.jsx";
+import BattlesListPage from "./pages/battle/BattlesListPage.jsx";
 import CharactersListPage from "./pages/character/CharactersListPage.jsx";
 import CharacterDetailPage from "./pages/character/CharacterDetailPage.jsx";
 
@@ -39,6 +40,7 @@ function App() {
 
           <Route path="/" element={<Template />} >
             <Route index element={<HomePage />} />
+            <Route path="/combats" element={<BattlesListPage />} />
             <Route path="/combat/:combatID" element={<BattlePage />} />
             <Route path="/personnages" element={<CharactersListPage />} />
             <Route path="/personnage/:personnageID" element={<CharacterDetailPage />} />
