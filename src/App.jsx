@@ -7,6 +7,7 @@ import './assets/styles/images.css';
 import './assets/styles/animations.css';
 import './assets/styles/forms.css';
 import './assets/styles/tables.css';
+import './assets/styles/layout.css';
 import { Route, Routes, Navigate } from "react-router-dom";
 import Template from "./components/templates/Template.jsx";
 import TemplateLogged from "./components/templates/TemplateLogged.jsx";
