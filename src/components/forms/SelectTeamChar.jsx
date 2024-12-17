@@ -3,7 +3,6 @@ import { FaRegTrashCan } from "react-icons/fa6";
 function SelectTeamChar({ fieldsTeam, teamString, characters, propsUpdateFieldF, propsRemoveFieldF, propsAddFieldF }) {
     return (
         <>
-
             {fieldsTeam?.map((oneField, indexField) =>
                 <div key={indexField} className="select-character">
 
@@ -19,7 +18,6 @@ function SelectTeamChar({ fieldsTeam, teamString, characters, propsUpdateFieldF,
             )}
 
             <button className={`btn-secondary btn-medium team${teamString}`} onClick={(e) => { e.preventDefault(); propsAddFieldF(teamString) }}>Ajouter</button>
-
         </>
     );
 }
