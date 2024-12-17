@@ -16,7 +16,7 @@ function HomeActiveBattle({ battle }) {
     const isPlaying = (user) => {
         const isSomePlayer = user.Characters.some(character =>
             character.Participations.some(participation =>
-                participation.battle_id === battle.id));
+                participation.battle_id == battle.id));
         setIsPlayer(isSomePlayer);
     };
 
@@ -101,7 +101,7 @@ function HomeActiveBattle({ battle }) {
                 <div className="buttons-zone">
                     {battle &&
                         <>
-                        {(user && isPlayer) || user && user.role === 'gamemaster' ? (
+                        {user ? (
                             <button className="btn-primary btn-large" onClick={() => navigate('/combat' + '/' + battle.id)}>
                                 <PiSword />
                                 <span>Jouer</span>
