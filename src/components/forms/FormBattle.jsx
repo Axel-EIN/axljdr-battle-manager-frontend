@@ -75,7 +75,7 @@ const FormBattle = ({ submitPropsFunction, initialBattle = false }) => {
     return (
         <form className="card large" onSubmit={handleSubmit}>
 
-            <div className="form-grid">
+            <div className="flex-1-1">
                 <div className="label-input">
                     <label htmlFor="title">Titre :</label>
                     <input required type="text" name="title" value={title} onChange={ (event) => setTitle(event.target.value) } />
