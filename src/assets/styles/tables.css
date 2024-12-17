@@ -24,7 +24,6 @@
     &.fr14 { grid-template-columns: repeat(14, 1fr); }
     &.fr15 { grid-template-columns: repeat(15, 1fr); }
 
-
     div {
         display: flex;
         justify-content: center;
