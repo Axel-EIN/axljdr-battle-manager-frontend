@@ -31,7 +31,7 @@ const UserEditPage = () => {
 
   return (
     <>
-      <h1>Modifier l'utilisateur : {userToEdit?.login}</h1>
+      <h1>Modifier l'utilisateur</h1>
       {userToEdit ? <FormUser submitPropsFunction={submitPropsEditUser} initialUser={userToEdit} /> : <p>Chargement des données de l'utilisateur...</p>}
     </>
   );
