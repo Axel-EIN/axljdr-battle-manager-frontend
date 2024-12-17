@@ -56,7 +56,7 @@ const GameMasterPage = () => {
         <>
             <h1>Panneau du Maître du Jeu</h1>
 
-            <div className="layout-flex-row">
+            <div className="flex-1-1">
                 <div className="list-characters">
 
                     <h2>Personnages</h2>
