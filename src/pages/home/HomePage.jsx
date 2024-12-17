@@ -91,7 +91,7 @@ function HomePage() {
                             })} >
                                 <div>{c.portrait?
                                     <img className="portrait xsmall" src={`${URLS.BACK_URL}/${c.portrait}`} />
-                                    : <img className="portrait small" src={`${NA.PORTRAIT}`} /> }
+                                    : <img className="portrait xsmall" src={`${NA.PORTRAIT}`} /> }
                                 </div>
                                 <div className="span2"><strong>{c.firstname}</strong></div>
                                 {user && <div className="span2">{c.User?.firstname}</div>}
