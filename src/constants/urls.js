@@ -34,4 +34,7 @@ export const URLS = {
     BATTLE_RESTART: `${BACK_URL}/api/battle/restart`,
     BATTLE_PLAYTURN: `${BACK_URL}/api/battle/turn`,
     BATTLE_RESTORE: `${BACK_URL}/api/battle/restore`,
+
+    // VERIFY
+    VERIFY_EMAIL: `${BACK_URL}/api/user/verify/email`,
 }
