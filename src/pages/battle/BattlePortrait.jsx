@@ -32,10 +32,10 @@ function BattlePortrait( { participation, key, isActive = false, isPlayed = fals
                     />
                 </div>
                 <div  className={classNames('stats', {'hidden' : participation.is_out})}>
-                    <div className="stat-row"><FaHeartPulse className='heart' /> HP <strong className="value">{participation.Character.health}</strong></div>
-                    <div className="stat-row"><FaRunning /> Evasion <strong className="value">{participation.current_tn}</strong></div>
-                    <div className="stat-row"><IoSpeedometerSharp /> Initiative <strong className="value">{participation.initiative}</strong></div>
-                    <div className="stat-row">Posture <strong className="value">{participation.stance}</strong></div>
+                    <div className="stat-row"><FaHeartPulse className='heart' /><span class="stat-label"> HP </span><strong className="value">{participation.Character.health}</strong></div>
+                    <div className="stat-row"><FaRunning /><span class="stat-label"> Evasion </span><strong className="value">{participation.current_tn}</strong></div>
+                    <div className="stat-row"><IoSpeedometerSharp /><span class="stat-label"> Initiative </span><strong className="value">{participation.initiative}</strong></div>
+                    <div className="stat-row"><span class="stat-label"> Posture </span><strong className="value">{participation.stance}</strong></div>
                 </div>
             </div>
         </div>
