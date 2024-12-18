@@ -36,11 +36,13 @@ function Header() {
             }
             <div className="navbar">
                 <div className="navbar-container">
-                    <div className="logo">
-                        <Link to="/">
-                            <img src="/logo-axljdrbattle.png" alt="Logo AXL JDR Battle" />
-                        </Link>
-                    </div>
+                    {location.pathname != `/combat/${combatID}` &&
+                        <div className="logo">
+                            <Link to="/">
+                                <img src="/logo-axljdrbattle.png" alt="Logo AXL JDR Battle" />
+                            </Link>
+                        </div>
+                    }
                     <ul className="navbar-menu">
                         <li className="navbar-menu-item">
                             <Link className={location.pathname === '/' ? 'navbar-menu-link active' : 'navbar-menu-link'} to="/">Accueil</Link>
@@ -55,14 +57,16 @@ function Header() {
                     <div className="navbar-user">
                         {user ? (
                             <div className="logged">
-                                <div>Bienvenue <strong>{user.firstname}</strong> !</div>
+                                {location.pathname != `/combat/${combatID}` &&
+                                    <div>Bienvenue <strong>{user.firstname}</strong> !</div>
+                                }
                                 <Link to="/mon-compte">Mon compte</Link>
-                                <button onClick={handleLogout}>Se deconnecter</button>
+                                <button onClick={handleLogout}>Se deconnecter ({user.login})</button>
                             </div>
                         ) : (
                         <div className="notlogged">
                                 <Link to="/connexion">
-                                    <button className="btn-primary btn-medium">Se connecter</button>
+                                    <button className="btn-primary btn-medium">Se&nbsp;connecter</button>
                                 </Link>
                                 <Link to="/inscription">S'inscrire</Link>
                             </div>
