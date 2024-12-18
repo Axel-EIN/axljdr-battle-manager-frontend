@@ -14,6 +14,30 @@
     --font-size-small: 14px;
     --font-size-xsmall: 12px;
 
+    @media (max-width: 1279px) { /* FONT SIZES FOR TABLETS */
+        --font-size-xdisplay: 64px; /* 2/3 */
+        --font-size-display: 42px;
+        --font-size-xxlarge: 36px;
+        --font-size-xlarge: 28px;
+        --font-size-large: 24px;
+        --font-size-medium: 18px;
+        --font-size-base: 15px;
+        --font-size-small: 13px;
+        --font-size-xsmall: 11px;
+    }    
+
+    @media (max-width: 719px) { /* FONT SIZES FOR SMARTPHONES */
+        --font-size-xdisplay: 48px; /* 1/2 */
+        --font-size-display: 32px; /* 1/2 */
+        --font-size-xxlarge: 28px;
+        --font-size-xlarge: 24px;
+        --font-size-large: 20px;
+        --font-size-medium: 16px;
+        --font-size-base: 14px;
+        --font-size-small: 12px;
+        --font-size-xsmall: 10px;
+    }    
+
     a {
         color: var(--link-color-base);
         text-decoration: none;
