@@ -1,0 +1,17 @@
+.btn-primary.admin {
+    @media (max-width: 719px) {
+        margin: 0 auto !important;
+    }
+}
+
+.col-characters, .col-avatar, .col-firstname, .col-email {  
+    @media (max-width: 719px) {
+        display: none !important;
+    }
+}
+
+.fr14 {
+    @media (max-width: 719px) {
+        grid-template-columns: repeat(6, 1fr) !important;
+    }
+}
