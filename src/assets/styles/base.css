@@ -1,10 +1,6 @@
 :root {
-    /* Les breakpoints pour les différentes largeurs pour le design responsive */
-    --breakpoint-desktop-battle: 1400px;
-    --breakpoint-desktop: 1280px;
-    --breakpoint-tablet: 720px;
-    --breakpoint-mobile: 360px;
     box-sizing: border-box;
+    font-size: var(--font-size-base);
 }
 
 body {
@@ -15,8 +11,7 @@ body {
         url('../images/backgrounds/tileable-tigers-blue.jpg');
     background-repeat: repeat, no-repeat, repeat;
     background-color: var(--color-dark);
-    font-family: var(--font-base);;
-    font-size: var(--font-size-base);
+    font-family: var(--font-base);
     color: var(--font-color-base);
     line-height: var(--line-height-base);
 
@@ -24,39 +19,5 @@ body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-    }
-}
-
-.container {
-    display: block;
-    flex-grow: 1;
-    margin: 0 auto;
-    width: var(--breakpoint-desktop);
-}
-
-@media (max-width: 1279px) { /* Design pour Tablet - 720px à 1279px */
-    .container {
-        background-color: red;
-        width: 100%;
-        min-width: var(--breakpoint-tablet);
-    }
-}
-
-@media (max-width: 719px) { /* Design pour Tablet - 360px à 719px */
-    .container {
-        background-color: blue;
-        width: 100%;
-        min-width: var(--breakpoint-mobile);
-    }
-}
-
-.layout-flex-row {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    width: 100%;
-
-    div {
-        flex-grow: 1;
     }
 }
