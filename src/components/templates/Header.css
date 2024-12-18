@@ -43,7 +43,6 @@ header {
             box-sizing: border-box;
     
             .logo {
-                margin-right: 1.5rem;
                 will-change: filter;
                 transition: filter 300ms;
                 animation-name: logo-spin;
@@ -51,9 +50,13 @@ header {
                 img { width: 84px; }
                 &:hover { filter: drop-shadow(0 0 2rem var(--color-primary)); }
             }
+
+            @media (max-width: 719px) {
+                .logo { display: none; }
+            }    
     
             .navbar-menu {
-                margin-left: 0;
+                margin-left: 1rem;
                 padding-left: 0;
                 list-style-type: none;
                 display: flex;
