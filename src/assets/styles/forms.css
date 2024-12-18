@@ -4,6 +4,8 @@ form {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    box-sizing: border-box;
+    width: 100%;
     margin: 0 auto;
 
     &.single {
@@ -35,8 +37,13 @@ form {
         font-size: var(--font-size-medium);
     }
 
-    input, select, option {
+    input, select, option, .btn-secondary {
         width: 380px;
+        @media (max-width: 1279px) { width: 320px; }    
+        @media (max-width: 719px) { width: 240px; }
+    }
+
+    input, select, option {
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
         box-sizing: border-box;
