@@ -5,12 +5,6 @@ body.active-battle-bg {
         url('../../assets/images/backgrounds/tileable-tigers-red.jpg');
 }
 
-main.active-battle-container {
-    width: var(--breakpoint-desktop-battle);
-    max-width: var(--breakpoint-desktop-battle);
-    min-width: var(--breakpoint-desktop-battle);
-}
-
 .battle-title {
     text-align: center;
     font-size: var(--font-size-xxlarge);
@@ -40,27 +34,38 @@ main.active-battle-container {
 }
 
 .fight {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 170px 1fr;
-    height: 500px;
+    display: flex;
     align-items: center;
     justify-items: center;
-    width: var(--breakpoint-desktop-battle);
-    max-width: var(--breakpoint-desktop-battle);
-    min-width: var(--breakpoint-desktop-battle);
+    margin-top: 2rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 1279px) { /* Design pour Mobile allant de 360DP à 719DP */
+        margin-top: 0.5rem;
+    }
 
     .center {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
 
-        .btn-icon { margin-bottom: 1rem; }
+        @media (max-width: 1279px) { /* Design pour Mobile allant de 360DP à 719DP */
+            flex-direction: row;
+            order: -1 !important;
+            width: 100% !important;
+            margin-bottom: 0.5rem;
+            .display { display: none !important; }
+        }
     }
 
     .team {
         flex-grow: 1;
+        @media (max-width: 1279px) { /* Design pour Mobile allant de 360DP à 719DP */
+            flex: 1 1 50%;
+        }
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -68,7 +73,6 @@ main.active-battle-container {
         flex-wrap: wrap;
         gap: 1.5rem;
   
-
 
         .character-wrapper {
             position: relative;
@@ -180,6 +184,10 @@ main.active-battle-container {
                     gap: 0.5rem;
                     color: var(--color-light-darker);
 
+                    @media (max-width: 719px) { /* Design pour Mobile allant de 360DP à 719DP */
+                        .stat-label { display: none !important; }
+                    }
+
                     .value {
                         color: var(--color-white);
                         margin-left: auto;
@@ -196,9 +204,16 @@ main.active-battle-container {
 
 .play-logs-section {
     margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+        flex: 1 1 50%;
+        @media (max-width: 719px) { /* Design pour Mobile allant de 360DP à 719DP */
+            flex: 1 1 100%;
+            margin-bottom: 1rem;
+        }
+    }
 
     h2 { text-align: center; }
 
