@@ -51,7 +51,9 @@
 }
 
 .character-card {
-    width: 190px;
+    width: 180px; 
+    @media (max-width: 719px) { width: 160px; }
+
     box-sizing: border-box;
     position: relative;
     filter: drop-shadow(4px 4px 4px var(--color-black-alpha-50));
