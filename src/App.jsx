@@ -30,6 +30,7 @@ import BattlePage from "./pages/battle/BattlePage.jsx";
 import BattlesListPage from "./pages/battle/BattlesListPage.jsx";
 import CharactersListPage from "./pages/character/CharactersListPage.jsx";
 import CharacterDetailPage from "./pages/character/CharacterDetailPage.jsx";
+import VerifyEmailPage from "./pages/verify/VerifyEmailPage.jsx";
 
 function App() {
   return ( // Définition des Routes
@@ -40,6 +41,7 @@ function App() {
 
           <Route path="/" element={<Template />} >
             <Route index element={<HomePage />} />
+            <Route path="/verification/:token" element={<VerifyEmailPage />} />
             <Route path="/combats" element={<BattlesListPage />} />
             <Route path="/combat/:combatID" element={<BattlePage />} />
             <Route path="/personnages" element={<CharactersListPage />} />
