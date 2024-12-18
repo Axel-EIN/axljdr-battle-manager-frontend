@@ -1,3 +1,4 @@
+import './AdminPage.css';
 import axios from 'axios';
 import { URLS } from '../../constants/urls.js';
 import { NA } from '../../constants/na.js';
@@ -37,31 +38,31 @@ const AdminPage = () => {
             <h1>Panneau d'administration</h1>
 
             <h2>Utilisateurs</h2>
-            <button className="btn-primary btn-medium" onClick={() => navigate("/admin/utilisateur/creer")}>Ajouter un Utilisateur</button>
+            <button className="btn-primary btn-medium admin" onClick={() => navigate("/admin/utilisateur/creer")}>Ajouter un Utilisateur</button>
 
             <div className="flex-table"> 
                 <div className="grid-row fr14 head">
-                    <div className="span2">Avatar</div>
+                    <div className="col-avatar span2">Avatar</div>
                     <div className="span2">Identifiant</div>
-                    <div className="span2">Prénom</div>
-                    <div className="span3">Email</div>
+                    <div className="col-firstname span2">Prénom</div>
+                    <div className="col-email span3">Email</div>
                     <div className="span2">Rôle</div>
-                    <div>Personnages</div>
+                    <div className="col-characters">Personnages</div>
                     <div></div>
                     <div></div>
                 </div>
                 {users.map(user =>
                     <div key={user.id} className="grid-row fr14 card row">
-                        <div className="span2">
+                        <div className="col-avatar span2">
                             {user.avatar?
                                 <img className="avatar small" src={`${URLS.BACK_URL}/${user.avatar}`} />
                                 : <img className="avatar small" src={`${NA.AVATAR}`} /> }
                         </div>
                         <div className="span2"><strong>{user.login}</strong></div>
-                        <div className="span2">{user.firstname}</div>
-                        <div className="span3">{user.email}</div>
+                        <div className="col-firstname span2">{user.firstname}</div>
+                        <div className="col-email span3">{user.email}</div>
                         <div className="span2">{user.role}</div>
-                        <div>{user.Characters.length}</div>
+                        <div className="col-characters">{user.Characters.length}</div>
                         <div><Link to={'/admin/utilisateur/modifier' + '/' + user.id}><GrEdit /></Link></div>
                         <div><Link><FaRegTrashCan onClick={() => window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?") && deleteUser(user.id)} /></Link></div>
                     </div>
