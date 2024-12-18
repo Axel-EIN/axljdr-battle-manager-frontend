@@ -1,14 +1,60 @@
+:root {
+    /* Les breakpoints pour les différentes largeurs pour le design responsive */
+    --breakpoint-desktop: 1260px;
+    --breakpoint-tablet: 700px;
+    --breakpoint-mobile: 340px;
+}
+
+.container {
+    display: block;
+    flex-grow: 1;
+    margin: 0 auto;
+    width: var(--breakpoint-desktop);
+    box-sizing: border-box;
+}
+
+@media (max-width: 1279px) { /* Design pour Tablet - 720px à 1279px */
+    .container {
+        /* background-color: red; */
+        width: 100%;
+        min-width: var(--breakpoint-tablet);
+        padding: 0 0.6rem;
+    }
+}
+
+@media (max-width: 719px) { /* Design pour Mobile allant de 360DP à 719DP */
+    .container {
+        /* background-color: blue; */
+        width: 100%;
+        min-width: var(--breakpoint-mobile);
+    }
+}
+
+.layout-flex-row {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+
+    div {
+        flex-grow: 1;
+    }
+}
+
 .flex-1-1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     box-sizing: border-box;
+    @media (max-width: 719px) { flex-direction: column; }
 
     & > div {
         flex: 0 0 50%;
         box-sizing: border-box;
         margin-bottom: 1rem;
         padding: 1rem;
+
+        @media (max-width: 719px) { padding: 0; }
     }
 
     dd {
@@ -47,6 +93,8 @@
         box-sizing: border-box;
         margin-bottom: 1rem;
         padding: 1rem;
+
+        @media (max-width: 719px) { flex: 0 0 100%; }    
     }
 }
 
