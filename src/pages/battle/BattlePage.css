@@ -38,10 +38,11 @@ body.active-battle-bg {
     align-items: center;
     justify-items: center;
     margin-top: 2rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     @media (max-width: 1279px) { /* Design pour Mobile allant de 360DP à 719DP */
         margin-top: 0.5rem;
+        flex-wrap: wrap;
     }
 
     .center {
@@ -64,7 +65,7 @@ body.active-battle-bg {
     .team {
         flex-grow: 1;
         @media (max-width: 1279px) { /* Design pour Mobile allant de 360DP à 719DP */
-            flex: 1 1 50%;
+            flex: 1 1 50% !important;
         }
         display: flex;
         flex-direction: row;
