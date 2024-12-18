@@ -248,21 +248,21 @@ const BattlePage = () => {
                 <>
                     <div className="active-status-line">
                         <h3>
-                            <dt>Statut :</dt>
+                            <dt>Statut</dt>
                             <dd>{battle?.status}</dd>
                         </h3>
                         <h3>
-                            <dt>Round :</dt>
+                            <dt>Round</dt>
                             <dd>{battle?.current_round}</dd>
                         </h3>
                         <h3>
-                            <dt>Tour :</dt>
-                            <dd>{battle?.CurrentTurn?.firstname || <span>Pas commencé</span>}</dd>
+                            <dt>Tour</dt>
+                            <dd>{battle?.CurrentTurn?.firstname || <span>Aucun</span>}</dd>
                         </h3>
-                        <h3>
-                            <dt>isLoading :</dt>
+                        {/* <h3>
+                            <dt>isLoading</dt>
                             <dd>{isLoading && <span>LOADING</span>}</dd>
-                        </h3>
+                        </h3> */}
                     </div>
 
                     <div className="fight">
@@ -331,7 +331,7 @@ const BattlePage = () => {
 
                     <div className="play-logs-section container">
                         <div className="play-zone">
-                            <h2>Actions :</h2>
+                            <h2>Actions</h2>
                             <div className="turn-actions">
                                 {user && battle && battle.status != 'paused' && battle.status != 'waiting' &&
                                     <>
@@ -379,7 +379,7 @@ const BattlePage = () => {
                             </div>
                         </div>
                         <div className="logs-zone">
-                            <h2>Battle Logs :</h2>
+                            <h2>Battle Logs</h2>
                             <div className="logs">
                                 {logs.map((log, index) =>
                                     <div className="card row" key={index}>{log}</div>).reverse()}
