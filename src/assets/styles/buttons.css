@@ -5,6 +5,7 @@ button {
     display: flex;
     align-items: center;
     color: var(--link-color-base);
+    cursor: pointer;
 
     &:hover {
         cursor: pointer;
@@ -28,26 +29,25 @@ button {
 
 .btn-small {
     gap: 0.2rem;
-    padding: 0.33rem 0.66rem;
+    padding: 0.33rem 0.5rem;
     font-family: var(--font-base);
     font-size: var(--font-size-small);
 }
 
 .btn-medium {
     gap: 0.5rem;
-    padding: 0.66rem 1.2rem;
+    padding: 0.66rem 1rem;
     font-family: var(--font-base);
     font-size: var(--font-size-medium);
 }
 
 .btn-large {
     gap: 0.5rem;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     font-family: var(--font-base);
     font-size: var(--font-size-large);
     min-width: 180px;
 }
-
 
 .btn-primary {
     display: flex;
@@ -98,17 +98,14 @@ button {
     }
 
     &.teamA {
-        width: 380px;
         margin-top: 0.5rem;
         background-color: var(--color-primary-darkest-alpha-50);
         &:hover { background-color: var(--color-primary); }
     }
 
     &.teamB {
-        width: 380px;
         margin-top: 0.5rem;
         background-color: var(--color-secondary-alpha-50);
         &:hover { background-color: var(--color-secondary-lighter); }
     }
-
 }
