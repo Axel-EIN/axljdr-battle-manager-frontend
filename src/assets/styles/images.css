@@ -2,9 +2,14 @@
     width: 96px;
     border-radius: 3rem;
 
+    @media (max-width: 1279px) { width: 84px; }    
+    @media (max-width: 719px) { width: 72px; }
+
     &.small {
         width: 48px;
         border-radius: 2rem;
+        @media (max-width: 1279px) { width: 40px; }    
+        @media (max-width: 719px) { width: 36px; }
     }
 }
 
@@ -12,14 +17,21 @@
     width: 96px;
     border-radius: 0.5rem;
 
+    @media (max-width: 1279px) { width: 84px; }    
+    @media (max-width: 719px) { width: 72px; }
+
     &.medium {
         width: 120px;
         border-radius: 1rem;
+        @media (max-width: 1279px) { width: 90px; }    
+        @media (max-width: 719px) { width: 80px; }
     }
-
+    
     &.small {
         width: 48px;
         border-radius: 0.5rem;
+        @media (max-width: 1279px) { width: 40px; }    
+        @media (max-width: 719px) { width: 36px; }
     }
 
     &.xsmall {
@@ -31,14 +43,21 @@
     width: 96px;
     border-radius: 0.5rem;
 
+    @media (max-width: 1279px) { width: 84px; }    
+    @media (max-width: 719px) { width: 72px; }
+
     &.small {
         width: 48px;
         border-radius: 0.5rem;
+        @media (max-width: 1279px) { width: 40px; }    
+        @media (max-width: 719px) { width: 36px; }
     }
 
     &.medium {
         width: 128px;
         border-radius: 1rem;
+        @media (max-width: 1279px) { width: 90px; }    
+        @media (max-width: 719px) { width: 80px; }
     }
 
     &.big {
