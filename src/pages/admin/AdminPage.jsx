@@ -41,18 +41,19 @@ const AdminPage = () => {
             <button className="btn-primary btn-medium admin" onClick={() => navigate("/admin/utilisateur/creer")}>Ajouter un Utilisateur</button>
 
             <div className="flex-table"> 
-                <div className="grid-row fr14 head">
+                <div className="grid-row fr15 head">
                     <div className="col-avatar span2">Avatar</div>
                     <div className="span2">Identifiant</div>
                     <div className="col-firstname span2">Prénom</div>
                     <div className="col-email span3">Email</div>
+                    <div>Vérifié</div>
                     <div className="span2">Rôle</div>
                     <div className="col-characters">Personnages</div>
                     <div></div>
                     <div></div>
                 </div>
                 {users.map(user =>
-                    <div key={user.id} className="grid-row fr14 card row">
+                    <div key={user.id} className="grid-row fr15 card row">
                         <div className="col-avatar span2">
                             {user.avatar?
                                 <img className="avatar small" src={`${URLS.BACK_URL}/${user.avatar}`} />
@@ -61,6 +62,7 @@ const AdminPage = () => {
                         <div className="span2"><strong>{user.login}</strong></div>
                         <div className="col-firstname span2">{user.firstname}</div>
                         <div className="col-email span3">{user.email}</div>
+                        <div>{user.isVerify ? <span>Oui</span> : <span>Non</span>}</div>
                         <div className="span2">{user.role}</div>
                         <div className="col-characters">{user.Characters.length}</div>
                         <div><Link to={'/admin/utilisateur/modifier' + '/' + user.id}><GrEdit /></Link></div>
