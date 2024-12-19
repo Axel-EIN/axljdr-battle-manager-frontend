@@ -11,6 +11,7 @@ const FormUser = ({ submitPropsFunction, initialUser = false, register = false }
     const [firstname, setFirstname] = useState(initialUser.firstname || '');
     const [avatar, setAvatar] = useState(null);
     const [role, setRole] = useState(initialUser.role || '');
+    const [isVerify, setIsVerify] = useState(initialUser.isVerify || '');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +23,7 @@ const FormUser = ({ submitPropsFunction, initialUser = false, register = false }
         if (firstname && firstname != '') newUserFormData.append('firstname', firstname);
         if (avatar && avatar != '') newUserFormData.append('avatar', avatar);
         if (role && role != '') newUserFormData.append('role', role);
+        if (isVerify && isVerify != '') newUserFormData.append('isVerify', isVerify);
 
         if ( !newUserFormData.get('login')
         || !newUserFormData.get('email')
@@ -73,6 +75,16 @@ const FormUser = ({ submitPropsFunction, initialUser = false, register = false }
                         <div className="label-input">
                             <label htmlFor="avatar">Avatar</label>
                             <input type="file" name="avatar" onChange={(event) => setAvatar(event.target.files[0])} />
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="label-input">
+                            <label htmlFor="isVerify">Vérification Email :</label>
+                            <select required name="isVerify" id="isVerify" value={isVerify} onChange={(event) => setIsVerify(event.target.value)} >
+                                <option defaultValue value={false}>Non-vérifié</option>
+                                <option value={true}>Vérifié</option>
+                            </select>
                         </div>
                     </div>
                 </>
